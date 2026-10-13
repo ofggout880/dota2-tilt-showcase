@@ -1,0 +1,23 @@
+{
+  "name": "dota2-churn-showcase",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test:i18n": "node tests/stress_test_translations.js",
+    "test:overflow": "node --experimental-websocket tests/verify_overflow.js",
+    "test:m5": "node tests/test_m5_proposals.js",
+    "test": "node tests/stress_test_translations.js && node --experimental-websocket tests/verify_overflow.js"
+  },
+  "dependencies": {
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.1",
+    "vite": "^8.0.12"
+  }
+}

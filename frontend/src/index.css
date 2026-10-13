@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+
+  /* Color Palette - Cyber / Dota Theme */
+  --bg-app: #06080d;
+  --bg-card: rgba(13, 20, 35, 0.7);
+  --bg-card-hover: rgba(20, 30, 50, 0.85);
+  --border-color: rgba(16, 185, 129, 0.15); /* Emerald tint border */
+  --border-glow: rgba(16, 185, 129, 0.25);
+  
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #94a3b8;
+  
+  --accent-purple: #10b981; /* Emerald Green (formerly purple) */
+  --accent-blue: #3b82f6; /* Cyber Blue */
+  --accent-cyan: #06b6d4; /* Cyber Cyan (replaces orange/amber) */
+  --accent-emerald: #10b981; /* Vivid Emerald Green */
+  --accent-rose: #ef4444; /* Cyber Red (replaces rose/teal) */
+  
+  --glow-purple: rgba(16, 185, 129, 0.35); /* Emerald glow */
+  --glow-cyan: rgba(6, 182, 212, 0.25); /* Cyan glow */
+  --glow-emerald: rgba(16, 185, 129, 0.35); /* Emerald glow */
+  --glow-rose: rgba(239, 68, 68, 0.35); /* Red glow */
+  
+  --shadow-main: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  --glass-blur: blur(12px);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-app);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.16) 0%, transparent 45%),
+    radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.04) 0%, transparent 60%);
+  background-attachment: fixed;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Glassmorphism card utility */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow-main);
+  transition: var(--transition-smooth);
+}
+
+.glass-card:hover {
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(16, 185, 129, 0.1);
+}
+
+/* Glowy Text Highlights */
+.glow-text-green {
+  color: #10b981 !important;
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.6), 0 0 20px rgba(16, 185, 129, 0.3);
+  font-weight: 700;
+}
+
+.glow-text-red {
+  color: #ef4444 !important;
+  text-shadow: 0 0 10px rgba(239, 68, 68, 0.6), 0 0 20px rgba(239, 68, 68, 0.3);
+  font-weight: 700;
+}
+
+.glow-text-cyan {
+  color: #06b6d4 !important;
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.6), 0 0 20px rgba(6, 182, 212, 0.3);
+  font-weight: 700;
+}
+
+.glow-text-purple {
+  color: #a78bfa !important;
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.6);
+  font-weight: 700;
+}
+
+/* Glowing Badges */
+.badge-glow-green {
+  background: rgba(16, 185, 129, 0.15) !important;
+  color: #10b981 !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.2) !important;
+  font-weight: bold;
+}
+
+.badge-glow-red {
+  background: rgba(239, 68, 68, 0.15) !important;
+  color: #ef4444 !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.2) !important;
+  font-weight: bold;
+}
+
+.badge-glow-cyan {
+  background: rgba(6, 182, 212, 0.15) !important;
+  color: #06b6d4 !important;
+  border: 1px solid rgba(6, 182, 212, 0.3) !important;
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.2) !important;
+  font-weight: bold;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(11, 12, 16, 0.5);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
