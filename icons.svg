@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <defs>
+    <!-- Flame / Ember Icon -->
+    <g id="icon-flame">
+      <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <!-- Activity / Telemetry Icon -->
+    <g id="icon-activity">
+      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <!-- Shield Icon -->
+    <g id="icon-shield">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <!-- Cpu / ML Icon -->
+    <g id="icon-cpu">
+      <rect x="4" y="4" width="16" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+      <rect x="9" y="9" width="6" height="6" fill="none" stroke="currentColor" stroke-width="2"/>
+      <line x1="9" y1="1" x2="9" y2="4" stroke="currentColor" stroke-width="2"/>
+      <line x1="15" y1="1" x2="15" y2="4" stroke="currentColor" stroke-width="2"/>
+      <line x1="9" y1="20" x2="9" y2="23" stroke="currentColor" stroke-width="2"/>
+      <line x1="15" y1="20" x2="15" y2="23" stroke="currentColor" stroke-width="2"/>
+      <line x1="20" y1="9" x2="23" y2="9" stroke="currentColor" stroke-width="2"/>
+      <line x1="20" y1="15" x2="23" y2="15" stroke="currentColor" stroke-width="2"/>
+      <line x1="1" y1="9" x2="4" y2="9" stroke="currentColor" stroke-width="2"/>
+      <line x1="1" y1="15" x2="4" y2="15" stroke="currentColor" stroke-width="2"/>
+    </g>
+  </defs>
+</svg>
