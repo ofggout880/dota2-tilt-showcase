@@ -12,6 +12,9 @@
 </p>
 
 <p align="center">
+  <a href="https://ofggout880.github.io/dota2-tilt-showcase/">
+    <img src="https://img.shields.io/badge/Live_Demo-GitHub_Pages-22C55E?style=for-the-badge&logo=githubpages&logoColor=white" alt="Live Demo" />
+  </a>
   <a href="https://www.linkedin.com/in/matthieu-gout">
     <img src="https://img.shields.io/badge/LinkedIn-Matthieu_Gout-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Profile" />
   </a>
@@ -112,6 +115,19 @@ npm run dev
 Open your browser at **`http://localhost:5173`** (or `http://127.0.0.1:5173`).
 
 > 💡 **Zero Setup Required**: The showcase includes an intelligent network layer with **100% offline fallback**. If the Python FastAPI backend is not running, the application automatically switches to **High-Fidelity Demo Mode** with deterministic telemetry simulation.
+
+---
+
+### 🌐 Instant Online Deployment via GitHub Pages
+
+The repository includes a preconfigured GitHub Actions workflow (`.github/workflows/deploy.yml`) for automated zero-config hosting:
+
+1. In your GitHub repository, navigate to **Settings** ⚙️ → **Pages**.
+2. Under **Build and deployment** → **Source**, switch from *Deploy from a branch* to **GitHub Actions**.
+3. Within 60 seconds, your showcase is live at:  
+   👉 **[https://ofggout880.github.io/dota2-tilt-showcase/](https://ofggout880.github.io/dota2-tilt-showcase/)**
+
+*(It also works out-of-the-box on [Vercel](https://vercel.com) or [Netlify](https://netlify.com) by pointing to the `frontend_showcase` root directory).*
 
 ---
 
