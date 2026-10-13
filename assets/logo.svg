@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <linearGradient id="shieldGrad" x1="20" y1="10" x2="100" y2="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ff7a00"/>
+      <stop offset="100%" stop-color="#b43b00"/>
+    </linearGradient>
+    <linearGradient id="innerGrad" x1="30" y1="20" x2="90" y2="95" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ff9933" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#ff5500" stop-opacity="0.05"/>
+    </linearGradient>
+    <filter id="glow" x="0" y="0" width="120" height="120" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="120" height="120" rx="28" fill="#0d0e12"/>
+  <rect x="2" y="2" width="116" height="116" rx="26" stroke="#26282f" stroke-width="2"/>
+
+  <!-- Outer Aegis Shield -->
+  <path d="M60 18L92 34V68C92 84 60 98 60 98C60 98 28 84 28 68V34L60 18Z" 
+        fill="url(#innerGrad)" stroke="url(#shieldGrad)" stroke-width="3.5" stroke-linejoin="round"/>
+
+  <!-- Inner Defense Core -->
+  <path d="M60 30L82 41V64C82 75 60 85 60 85C60 85 38 75 38 64V41L60 30Z" 
+        fill="rgba(255, 122, 0, 0.15)" stroke="#ff7a00" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- Telemetry Pulse Flame -->
+  <path d="M52 64C52 57 56 53 60 48C64 53 68 57 68 64C68 69.5 64.5 73 60 73C55.5 73 52 69.5 52 64Z" 
+        fill="#ffffff" filter="url(#glow)"/>
+  <circle cx="60" cy="62" r="3" fill="#ff7a00"/>
+
+  <!-- Subtitle Accent Dots -->
+  <circle cx="60" cy="106" r="2.5" fill="#ff7a00"/>
+  <circle cx="50" cy="106" r="1.5" fill="#4a4d57"/>
+  <circle cx="70" cy="106" r="1.5" fill="#4a4d57"/>
+</svg>
