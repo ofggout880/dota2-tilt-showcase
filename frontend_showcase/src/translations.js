@@ -21,7 +21,7 @@ export const translations = {
       },
       status: {
         online: "API En ligne",
-        offline: "Démo Hors-ligne",
+        offline: "Démo Interactive",
         checking: "Connexion..."
       },
       langToggle: {
@@ -454,8 +454,8 @@ export const translations = {
     backendStatus: {
       online: "API En ligne",
       onlineSubtitle: "FastAPI connecté et opérationnel",
-      offline: "Démo Hors-ligne",
-      offlineSubtitle: "Télémétrie synthétisée & profils calibrés",
+      offline: "Démo Interactive",
+      offlineSubtitle: "Inférence autonome & profils calibrés",
       checking: "Vérification...",
       checkingSubtitle: "Test de la connectivité backend",
       popover: {
@@ -618,7 +618,7 @@ export const translations = {
       },
       status: {
         online: "API Online",
-        offline: "Offline Demo",
+        offline: "Interactive Demo",
         checking: "Connecting..."
       },
       langToggle: {
@@ -1051,8 +1051,8 @@ export const translations = {
     backendStatus: {
       online: "API Online",
       onlineSubtitle: "FastAPI connected and operational",
-      offline: "Offline Demo",
-      offlineSubtitle: "Synthesized telemetry & calibrated profiles",
+      offline: "Interactive Demo",
+      offlineSubtitle: "Autonomous inference & calibrated profiles",
       checking: "Checking...",
       checkingSubtitle: "Testing backend connectivity",
       popover: {
