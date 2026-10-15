@@ -132,7 +132,8 @@ export default function HeroSection({ lang, t }) {
               
               {/* Telemetry Stream SVG Wave */}
               <div className="telemetry-chart-wrapper">
-                <svg className="telemetry-svg-stream" viewBox="0 0 820 220" preserveAspectRatio="none">
+                {/* Desktop Telemetry Stream SVG Wave */}
+                <svg className="telemetry-svg-stream telemetry-svg-desktop" viewBox="0 0 820 220" preserveAspectRatio="none">
                   <defs>
                     <linearGradient id="streamGlow" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="0%" stopColor="#ff7a00" stopOpacity="0.38" />
@@ -233,6 +234,109 @@ export default function HeroSection({ lang, t }) {
                     {isFr ? 'MATCH T (RUPTURE)' : 'MATCH T (BREAKING POINT)'}
                   </text>
                   <text x="740" y="212" fill="rgba(255, 122, 0, 0.75)" fontSize="8.5" fontFamily="var(--font-mono)">+14J HORIZON</text>
+                </svg>
+
+                {/* Mobile-Optimized Telemetry Stream SVG (Compact, Proportional, No Distortion) */}
+                <svg className="telemetry-svg-stream telemetry-svg-mobile" viewBox="0 0 380 180" preserveAspectRatio="xMidYMid meet">
+                  <defs>
+                    <linearGradient id="streamGlowMobile" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#ff7a00" stopOpacity="0.4" />
+                      <stop offset="60%" stopColor="#ff7a00" stopOpacity="0.08" />
+                      <stop offset="100%" stopColor="#ff7a00" stopOpacity="0.0" />
+                    </linearGradient>
+                    <linearGradient id="lineGlowMobile" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0%" stopColor="#f59e0b" />
+                      <stop offset="45%" stopColor="#ff7a00" />
+                      <stop offset="70%" stopColor="#ef4444" />
+                      <stop offset="85%" stopColor="#ef4444" />
+                      <stop offset="100%" stopColor="#ff7a00" />
+                    </linearGradient>
+                  </defs>
+
+                  {/* Guide Grid Lines */}
+                  <line x1="0" y1="44" x2="380" y2="44" stroke="rgba(239, 68, 68, 0.16)" strokeDasharray="3 3" />
+                  <line x1="0" y1="80" x2="380" y2="80" stroke="rgba(255, 122, 0, 0.14)" strokeDasharray="3 3" />
+                  <line x1="0" y1="116" x2="380" y2="116" stroke="rgba(255, 255, 255, 0.1)" strokeDasharray="2 2" />
+
+                  {/* Filled Area */}
+                  <path
+                    d="M 0,112 C 40,110 80,118 120,112 C 160,108 195,124 220,114 C 235,102 244,44 250,44 C 256,44 266,95 285,125 C 310,148 345,132 380,134 L 380,180 L 0,180 Z"
+                    fill="url(#streamGlowMobile)"
+                  />
+
+                  {/* Glowing Telemetry Curve Line */}
+                  <path
+                    d="M 0,112 C 40,110 80,118 120,112 C 160,108 195,124 220,114 C 235,102 244,44 250,44 C 256,44 266,95 285,125 C 310,148 345,132 380,134"
+                    fill="none"
+                    stroke="url(#lineGlowMobile)"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                  />
+
+                  {/* Compact Level Badges on Mobile */}
+                  <g transform="translate(8, 28)">
+                    <rect x="0" y="0" width="102" height="15" rx="3" fill="rgba(12, 14, 18, 0.9)" stroke="rgba(239, 68, 68, 0.35)" strokeWidth="0.8" />
+                    <text x="51" y="8" fill="#f87171" fontSize="7.5" fontWeight="600" letterSpacing="0.03em" textAnchor="middle" dominantBaseline="central" fontFamily="var(--font-mono)">
+                      {isFr ? 'CRITIQUE > 4.0' : 'CRITICAL > 4.0'}
+                    </text>
+                  </g>
+
+                  <g transform="translate(8, 66)">
+                    <rect x="0" y="0" width="78" height="15" rx="3" fill="rgba(12, 14, 18, 0.9)" stroke="rgba(245, 158, 11, 0.35)" strokeWidth="0.8" />
+                    <text x="39" y="8" fill="#fbbf24" fontSize="7.5" fontWeight="600" letterSpacing="0.03em" textAnchor="middle" dominantBaseline="central" fontFamily="var(--font-mono)">
+                      {isFr ? 'VIGILANCE' : 'WARNING'}
+                    </text>
+                  </g>
+
+                  <g transform="translate(8, 122)">
+                    <rect x="0" y="0" width="72" height="15" rx="3" fill="rgba(12, 14, 18, 0.92)" stroke="rgba(148, 163, 184, 0.35)" strokeWidth="0.8" />
+                    <text x="36" y="8" fill="#cbd5e1" fontSize="7.5" fontWeight="600" letterSpacing="0.03em" textAnchor="middle" dominantBaseline="central" fontFamily="var(--font-mono)">
+                      BASELINE
+                    </text>
+                  </g>
+
+                  {/* Cutoff Vertical Line */}
+                  <line x1="250" y1="48" x2="250" y2="152" stroke="rgba(255, 122, 0, 0.45)" strokeDasharray="3 3" strokeWidth="1.2" />
+
+                  {/* Interactive Threshold Pill on Mobile */}
+                  <g
+                    transform="translate(254, 132)"
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => openDictionary('threshold')}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={isFr ? 'Voir la définition du Seuil θ*' : 'View Threshold θ* definition'}
+                  >
+                    <rect x="0" y="0" width={isFr ? 116 : 124} height="20" rx="4" fill="rgba(14, 16, 21, 0.96)" stroke="rgba(255, 122, 0, 0.65)" strokeWidth="1" />
+                    <text x={isFr ? 58 : 62} y="10" fill="#ff7a00" fontSize="7.5" fontWeight="700" letterSpacing="0.03em" textAnchor="middle" dominantBaseline="central" fontFamily="var(--font-mono)">
+                      {isFr ? 'SEUIL θ* = 0.36 ✦' : 'CUTOFF θ* = 0.36 ✦'}
+                    </text>
+                  </g>
+
+                  {/* Interactive Critical Tilt Peak Node on Mobile */}
+                  <g
+                    transform="translate(250, 44)"
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => openDictionary('tilt_index')}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={isFr ? "Voir l'Indice de Tilt" : 'View Tilt Index'}
+                  >
+                    <circle cx="0" cy="0" r="10" fill="rgba(239, 68, 68, 0.2)" />
+                    <circle cx="0" cy="0" r="5" fill="#ef4444" stroke="#ffffff" strokeWidth="1.5" />
+                    <line x1="0" y1="-5" x2="0" y2="-15" stroke="#ef4444" strokeWidth="1" strokeDasharray="2 2" />
+                    <rect x="-62" y="-36" width="124" height="21" rx="4" fill="rgba(14, 16, 21, 0.96)" stroke="#ef4444" strokeWidth="1" />
+                    <text x="0" y="-25" fill="#ef4444" fontSize="8" fontWeight="700" letterSpacing="0.04em" textAnchor="middle" dominantBaseline="central" fontFamily="var(--font-mono)">
+                      TILT : 4.8 / CRIT ✦
+                    </text>
+                  </g>
+
+                  {/* Clean 3-Milestone Timeline on Mobile */}
+                  <text x="50" y="168" fill="rgba(148, 163, 184, 0.65)" fontSize="8" fontFamily="var(--font-mono)" textAnchor="middle">M - 3 (FATIGUE)</text>
+                  <text x="250" y="168" fill="rgba(239, 68, 68, 0.95)" fontSize="8" fontWeight="700" fontFamily="var(--font-mono)" textAnchor="middle">
+                    {isFr ? 'MATCH T (RUPTURE)' : 'MATCH T (BREAKING)'}
+                  </text>
+                  <text x="345" y="168" fill="rgba(255, 122, 0, 0.75)" fontSize="8" fontFamily="var(--font-mono)" textAnchor="middle">+14J</text>
                 </svg>
               </div>
 

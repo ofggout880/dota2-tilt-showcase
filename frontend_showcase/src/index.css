@@ -1663,9 +1663,19 @@ p {
 
 .telemetry-svg-stream {
   width: 100%;
-  height: 225px;
   max-width: 100%;
   display: block;
+}
+
+.telemetry-svg-desktop {
+  display: block;
+  height: 225px;
+}
+
+.telemetry-svg-mobile {
+  display: none;
+  height: auto;
+  max-height: 210px;
 }
 
 /* Floating Real-Time Metric Pods */
@@ -2260,6 +2270,14 @@ p {
   .section {
     padding-top: 3rem;
     padding-bottom: 3rem;
+  }
+
+  /* Telemetry SVG Mobile switch */
+  .telemetry-svg-desktop {
+    display: none !important;
+  }
+  .telemetry-svg-mobile {
+    display: block !important;
   }
 
   /* Mobile navbar actions: keep status-badge accessible */
