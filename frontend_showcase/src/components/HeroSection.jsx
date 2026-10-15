@@ -172,22 +172,22 @@ export default function HeroSection({ lang, t }) {
                   <g transform="translate(10, 34)">
                     <rect x="0" y="0" width="168" height="18" rx="4" fill="rgba(12, 14, 18, 0.9)" stroke="rgba(239, 68, 68, 0.35)" strokeWidth="0.8" />
                     <text x="84" y="9" fill="#f87171" fontSize="8.5" fontWeight="600" letterSpacing="0.05em" textAnchor="middle" dominantBaseline="central" fontFamily="var(--font-mono)">
-                      ZONE CRITIQUE // TILT &gt; 4.0
+                      {isFr ? 'ZONE CRITIQUE // TILT > 4.0' : 'CRITICAL ZONE // TILT > 4.0'}
                     </text>
                   </g>
 
                   <g transform="translate(10, 82)">
-                    <rect x="0" y="0" width="118" height="18" rx="4" fill="rgba(12, 14, 18, 0.9)" stroke="rgba(245, 158, 11, 0.35)" strokeWidth="0.8" />
-                    <text x="59" y="9" fill="#fbbf24" fontSize="8.5" fontWeight="600" letterSpacing="0.05em" textAnchor="middle" dominantBaseline="central" fontFamily="var(--font-mono)">
-                      SEUIL VIGILANCE
+                    <rect x="0" y="0" width={isFr ? 118 : 140} height="18" rx="4" fill="rgba(12, 14, 18, 0.9)" stroke="rgba(245, 158, 11, 0.35)" strokeWidth="0.8" />
+                    <text x={isFr ? 59 : 70} y="9" fill="#fbbf24" fontSize="8.5" fontWeight="600" letterSpacing="0.05em" textAnchor="middle" dominantBaseline="central" fontFamily="var(--font-mono)">
+                      {isFr ? 'SEUIL VIGILANCE' : 'WARNING THRESHOLD'}
                     </text>
                   </g>
 
                   {/* Baseline Nominale Badge: positioned cleanly below line 145 free from curve overlap */}
                   <g transform="translate(10, 152)">
-                    <rect x="0" y="0" width="130" height="18" rx="4" fill="rgba(12, 14, 18, 0.92)" stroke="rgba(148, 163, 184, 0.35)" strokeWidth="0.8" />
-                    <text x="65" y="9" fill="#cbd5e1" fontSize="8.5" fontWeight="600" letterSpacing="0.05em" textAnchor="middle" dominantBaseline="central" fontFamily="var(--font-mono)">
-                      BASELINE NOMINALE
+                    <rect x="0" y="0" width="134" height="18" rx="4" fill="rgba(12, 14, 18, 0.92)" stroke="rgba(148, 163, 184, 0.35)" strokeWidth="0.8" />
+                    <text x="67" y="9" fill="#cbd5e1" fontSize="8.5" fontWeight="600" letterSpacing="0.05em" textAnchor="middle" dominantBaseline="central" fontFamily="var(--font-mono)">
+                      {isFr ? 'BASELINE NOMINALE' : 'NOMINAL BASELINE'}
                     </text>
                   </g>
 
@@ -199,11 +199,11 @@ export default function HeroSection({ lang, t }) {
                     onClick={() => openDictionary('threshold')}
                     role="button"
                     tabIndex={0}
-                    aria-label="Voir la définition du Seuil θ* dans le dictionnaire"
+                    aria-label={isFr ? 'Voir la définition du Seuil θ* dans le dictionnaire' : 'View Threshold θ* definition in glossary'}
                   >
-                    <rect x="0" y="0" width="144" height="24" rx="5" fill="rgba(14, 16, 21, 0.96)" stroke="rgba(255, 122, 0, 0.65)" strokeWidth="1.2" />
-                    <text x="72" y="12" fill="#ff7a00" fontSize="9" fontWeight="700" letterSpacing="0.04em" textAnchor="middle" dominantBaseline="central" fontFamily="var(--font-mono)">
-                      SEUIL θ* = 0.36 ✦
+                    <rect x="0" y="0" width={isFr ? 144 : 162} height="24" rx="5" fill="rgba(14, 16, 21, 0.96)" stroke="rgba(255, 122, 0, 0.65)" strokeWidth="1.2" />
+                    <text x={isFr ? 72 : 81} y="12" fill="#ff7a00" fontSize="9" fontWeight="700" letterSpacing="0.04em" textAnchor="middle" dominantBaseline="central" fontFamily="var(--font-mono)">
+                      {isFr ? 'SEUIL θ* = 0.36 ✦' : 'THRESHOLD θ* = 0.36 ✦'}
                     </text>
                   </g>
 
@@ -214,7 +214,7 @@ export default function HeroSection({ lang, t }) {
                     onClick={() => openDictionary('tilt_index')}
                     role="button"
                     tabIndex={0}
-                    aria-label="Voir la définition de l'Indice de Tilt dans le dictionnaire"
+                    aria-label={isFr ? "Voir la définition de l'Indice de Tilt dans le dictionnaire" : "View Tilt Index definition in glossary"}
                   >
                     <circle cx="0" cy="0" r="14" fill="rgba(239, 68, 68, 0.2)" className="animate-ping" />
                     <circle cx="0" cy="0" r="6" fill="#ef4444" stroke="#ffffff" strokeWidth="2" />
@@ -228,8 +228,10 @@ export default function HeroSection({ lang, t }) {
                   {/* Match Timeline Indicators */}
                   <text x="70" y="212" fill="rgba(148, 163, 184, 0.65)" fontSize="8.5" fontFamily="var(--font-mono)">M - 8</text>
                   <text x="220" y="212" fill="rgba(148, 163, 184, 0.65)" fontSize="8.5" fontFamily="var(--font-mono)">M - 6</text>
-                  <text x="380" y="212" fill="rgba(148, 163, 184, 0.65)" fontSize="8.5" fontFamily="var(--font-mono)">M - 4 (FATIGUE)</text>
-                  <text x="560" y="212" fill="rgba(239, 68, 68, 0.95)" fontSize="8.5" fontWeight="700" fontFamily="var(--font-mono)" textAnchor="middle">MATCH T (RUPTURE)</text>
+                  <text x="380" y="212" fill="rgba(148, 163, 184, 0.65)" fontSize="8.5" fontFamily="var(--font-mono)">{isFr ? 'M - 4 (FATIGUE)' : 'M - 4 (FATIGUE)'}</text>
+                  <text x="560" y="212" fill="rgba(239, 68, 68, 0.95)" fontSize="8.5" fontWeight="700" fontFamily="var(--font-mono)" textAnchor="middle">
+                    {isFr ? 'MATCH T (RUPTURE)' : 'MATCH T (BREAKING POINT)'}
+                  </text>
                   <text x="740" y="212" fill="rgba(255, 122, 0, 0.75)" fontSize="8.5" fontFamily="var(--font-mono)">+14J HORIZON</text>
                 </svg>
               </div>
@@ -242,9 +244,9 @@ export default function HeroSection({ lang, t }) {
                   tabIndex={0}
                   onClick={() => openDictionary('loss_streak')}
                   style={{ cursor: 'pointer' }}
-                  title="Voir la définition dans le dictionnaire"
+                  title={isFr ? "Voir la définition dans le dictionnaire" : "View definition in glossary"}
                 >
-                  <span className="hud-label">SÉRIE DÉFAITES ✦</span>
+                  <span className="hud-label">{isFr ? 'SÉRIE DÉFAITES ✦' : 'LOSS STREAK ✦'}</span>
                   <span className="hud-value glow-rose">-5 Games</span>
                 </div>
                 <div
@@ -253,9 +255,9 @@ export default function HeroSection({ lang, t }) {
                   tabIndex={0}
                   onClick={() => openDictionary('night_owl')}
                   style={{ cursor: 'pointer' }}
-                  title="Voir la définition dans le dictionnaire"
+                  title={isFr ? "Voir la définition dans le dictionnaire" : "View definition in glossary"}
                 >
-                  <span className="hud-label">SESSIONS NUIT ✦</span>
+                  <span className="hud-label">{isFr ? 'SESSIONS NUIT ✦' : 'NIGHT SESSIONS ✦'}</span>
                   <span className="hud-value glow-orange">48.2%</span>
                 </div>
                 <div
@@ -264,10 +266,10 @@ export default function HeroSection({ lang, t }) {
                   tabIndex={0}
                   onClick={() => openDictionary('party_size')}
                   style={{ cursor: 'pointer' }}
-                  title="Voir la définition dans le dictionnaire"
+                  title={isFr ? "Voir la définition dans le dictionnaire" : "View definition in glossary"}
                 >
-                  <span className="hud-label">BOUCLIER GROUPE ✦</span>
-                  <span className="hud-value text-emerald">12% (Isolé)</span>
+                  <span className="hud-label">{isFr ? 'BOUCLIER GROUPE ✦' : 'PARTY SHIELD ✦'}</span>
+                  <span className="hud-value text-emerald">{isFr ? '12% (Isolé)' : '12% (Solo)'}</span>
                 </div>
                 <div
                   className="hud-metric-chip"
@@ -275,9 +277,9 @@ export default function HeroSection({ lang, t }) {
                   tabIndex={0}
                   onClick={() => openDictionary('churn')}
                   style={{ cursor: 'pointer' }}
-                  title="Voir la définition dans le dictionnaire"
+                  title={isFr ? "Voir la définition dans le dictionnaire" : "View definition in glossary"}
                 >
-                  <span className="hud-label">PROBA CHURN ✦</span>
+                  <span className="hud-label">{isFr ? 'PROBA CHURN ✦' : 'CHURN PROBABILITY ✦'}</span>
                   <span className="hud-value glow-rose">86.5%</span>
                 </div>
               </div>
@@ -347,7 +349,7 @@ export default function HeroSection({ lang, t }) {
               <polyline points="2 17 12 22 22 17" />
               <polyline points="2 12 12 17 22 12" />
             </svg>
-            <span>VALVE TÉLÉMÉTRIE</span>
+            <span>{isFr ? 'VALVE TÉLÉMÉTRIE' : 'VALVE TELEMETRY'}</span>
           </div>
           <div className="tech-strip-item">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
