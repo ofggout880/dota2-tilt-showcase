@@ -7,6 +7,9 @@ import PsychologySection from './components/PsychologySection';
 import MlBenchmarkSection from './components/MlBenchmarkSection';
 import SimulatorSection from './components/SimulatorSection';
 import ArchitectureSection from './components/ArchitectureSection';
+import DictionaryDrawer from './components/DictionaryDrawer';
+import WelcomeDictionaryToast from './components/WelcomeDictionaryToast';
+import { DictionaryProvider } from './context/DictionaryContext';
 import { t } from './translations';
 import { checkBackendHealth, getMlMetrics, getMlVisualizations } from './services/api';
 import { MOCK_METRICS, MOCK_VISUALIZATIONS } from './data/mockData';
@@ -152,43 +155,50 @@ export default function App() {
 
   return (
     <ErrorBoundary lang={lang}>
-      <div className="app-shell">
-        {/* Sticky Header Shell */}
-        <Navbar
-          lang={lang}
-          setLang={handleSetLang}
-          t={t}
-          backendStatus={backendStatus}
-          onRefreshBackend={refreshBackend}
-        />
-
-        {/* Main Content Area */}
-        <main id="main-content" className="app-main">
-          {/* Milestone M2 Integrated Components */}
-          <HeroSection lang={lang} t={t} />
-
-          <KpiBar lang={lang} t={t} metricsData={mlMetrics} />
-
-          <PsychologySection lang={lang} t={t} />
-
-          <MlBenchmarkSection
+      <DictionaryProvider>
+        <div className="app-shell">
+          {/* Sticky Header Shell */}
+          <Navbar
             lang={lang}
+            setLang={handleSetLang}
             t={t}
-            metricsData={mlMetrics}
-            visData={mlVisualizations}
+            backendStatus={backendStatus}
+            onRefreshBackend={refreshBackend}
           />
 
+          {/* Main Content Area */}
+          <main id="main-content" className="app-main">
+            {/* Milestone M2 Integrated Components */}
+            <HeroSection lang={lang} t={t} />
 
-          {/* Section 5: Interactive Simulator & 4 Archetypes */}
-          <SimulatorSection lang={lang} t={t} backendStatus={backendStatus} />
+            <KpiBar lang={lang} t={t} metricsData={mlMetrics} />
 
-          {/* Section 6: Pipeline Architecture & Reproducibility */}
-          <ArchitectureSection lang={lang} t={t} />
-        </main>
+            <PsychologySection lang={lang} t={t} />
 
-        {/* Footer Shell */}
-        <Footer lang={lang} t={t} />
-      </div>
+            <MlBenchmarkSection
+              lang={lang}
+              t={t}
+              metricsData={mlMetrics}
+              visData={mlVisualizations}
+            />
+
+            {/* Section 5: Interactive Simulator & 4 Archetypes */}
+            <SimulatorSection lang={lang} t={t} backendStatus={backendStatus} />
+
+            {/* Section 6: Pipeline Architecture & Reproducibility */}
+            <ArchitectureSection lang={lang} t={t} />
+          </main>
+
+          {/* Global Slide-over Dictionary Drawer */}
+          <DictionaryDrawer lang={lang} t={t} />
+
+          {/* Welcome Interactive Dictionary Toast */}
+          <WelcomeDictionaryToast lang={lang} t={t} />
+
+          {/* Footer Shell */}
+          <Footer lang={lang} t={t} />
+        </div>
+      </DictionaryProvider>
     </ErrorBoundary>
   );
 }

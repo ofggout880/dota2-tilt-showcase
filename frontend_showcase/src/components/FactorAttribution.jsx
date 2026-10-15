@@ -1,5 +1,23 @@
 import React, { useState } from 'react';
 import { t as defaultT, translateFeature } from '../translations';
+import GlossaryTerm from './GlossaryTerm';
+
+const FEATURE_DICT_MAP = {
+  tilt_index: 'tilt_index',
+  current_streak_at_cutoff: 'loss_streak',
+  is_on_loss_streak: 'loss_streak',
+  loss_streak_length: 'loss_streak',
+  night_owl_pct: 'night_owl',
+  party_play_pct: 'party_size',
+  avg_xpm: 'avg_xpm',
+  avg_gpm: 'avg_gpm',
+  rank_tier: 'rank_tier',
+  recent_stomps_count: 'stomp',
+  rapid_stomps_count: 'stomp',
+  kda_ratio: 'kda',
+  kills_to_deaths_ratio: 'kda',
+  abandon_rate: 'tilt_index'
+};
 
 /**
  * Pre-calibrated Behavioral Factor Attributions for the 4 Reference Archetypes.
@@ -807,9 +825,15 @@ export default function FactorAttribution({
                     {/* Top line: Name + Code Badge + Weight */}
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem', marginBottom: '0.45rem', flexWrap: 'wrap' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap', minWidth: 0 }}>
-                        <span style={{ fontWeight: 600, fontSize: '0.875rem', color: 'var(--text-primary)', wordBreak: 'break-word' }}>
-                          {translateFeature(factor.feature, lang)}
-                        </span>
+                        {FEATURE_DICT_MAP[factor.feature] ? (
+                          <GlossaryTerm termId={FEATURE_DICT_MAP[factor.feature]}>
+                            {translateFeature(factor.feature, lang)}
+                          </GlossaryTerm>
+                        ) : (
+                          <span style={{ fontWeight: 600, fontSize: '0.875rem', color: 'var(--text-primary)', wordBreak: 'break-word' }}>
+                            {translateFeature(factor.feature, lang)}
+                          </span>
+                        )}
                         <code style={{ fontSize: '0.6875rem', color: 'var(--text-muted)', background: 'rgba(255, 255, 255, 0.05)', padding: '0.1rem 0.35rem', borderRadius: '3px' }}>
                           {factor.feature}
                         </code>
@@ -937,9 +961,15 @@ export default function FactorAttribution({
                     {/* Top line: Name + Code Badge + Weight */}
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem', marginBottom: '0.45rem', flexWrap: 'wrap' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap', minWidth: 0 }}>
-                        <span style={{ fontWeight: 600, fontSize: '0.875rem', color: 'var(--text-primary)', wordBreak: 'break-word' }}>
-                          {translateFeature(factor.feature, lang)}
-                        </span>
+                        {FEATURE_DICT_MAP[factor.feature] ? (
+                          <GlossaryTerm termId={FEATURE_DICT_MAP[factor.feature]}>
+                            {translateFeature(factor.feature, lang)}
+                          </GlossaryTerm>
+                        ) : (
+                          <span style={{ fontWeight: 600, fontSize: '0.875rem', color: 'var(--text-primary)', wordBreak: 'break-word' }}>
+                            {translateFeature(factor.feature, lang)}
+                          </span>
+                        )}
                         <code style={{ fontSize: '0.6875rem', color: 'var(--text-muted)', background: 'rgba(255, 255, 255, 0.05)', padding: '0.1rem 0.35rem', borderRadius: '3px' }}>
                           {factor.feature}
                         </code>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import GlossaryTerm from './GlossaryTerm';
 
 /**
  * PsychologySection Component
@@ -335,7 +336,11 @@ kda_trend = kda_recent - kda_older`,
                   {isFr ? 'LABORATOIRE INTERACTIF' : 'INTERACTIVE LAB'}
                 </div>
                 <h3>
-                  {isFr ? 'Simulateur Temps Réel du Tilt Index' : 'Live Tilt Index Simulator'}
+                  {isFr ? (
+                    <>Simulateur Temps Réel du <GlossaryTerm termId="tilt_index">Tilt Index</GlossaryTerm></>
+                  ) : (
+                    <>Live <GlossaryTerm termId="tilt_index">Tilt Index</GlossaryTerm> Simulator</>
+                  )}
                 </h3>
                 <p className="text-secondary" style={{ fontSize: '0.875rem' }}>
                   {isFr
@@ -346,7 +351,9 @@ kda_trend = kda_recent - kda_older`,
 
               {/* Calculated Score Display Box */}
               <div className="tilt-score-display-box">
-                <span className="tilt-score-label">{isFr ? 'Score de Tilt' : 'Tilt Score'}</span>
+                <span className="tilt-score-label">
+                  <GlossaryTerm termId="tilt_index">{isFr ? 'Score de Tilt' : 'Tilt Score'}</GlossaryTerm>
+                </span>
                 <span className={`tilt-score-number ${currentTier.glowClass}`}>
                   {calculatedTilt.toFixed(2)}
                 </span>
@@ -382,7 +389,9 @@ kda_trend = kda_recent - kda_older`,
               {/* Slider 2: Loss Streak */}
               <div className="tilt-slider-group">
                 <div className="slider-label-row">
-                  <label htmlFor="sim-streak">{isFr ? 'Série de Défaites :' : 'Consecutive Loss Streak:'}</label>
+                  <label htmlFor="sim-streak">
+                    <GlossaryTerm termId="loss_streak">{isFr ? 'Série de Défaites :' : 'Consecutive Loss Streak:'}</GlossaryTerm>
+                  </label>
                   <span className="slider-value-pill">{Math.abs(simStreak)} {isFr ? 'défaites' : 'losses'}</span>
                 </div>
                 <input

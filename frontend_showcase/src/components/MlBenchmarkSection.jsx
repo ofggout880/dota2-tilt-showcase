@@ -6,6 +6,7 @@ import {
   FEATURE_CATEGORIES
 } from '../data/mockData';
 import { translateFeature } from '../translations';
+import GlossaryTerm from './GlossaryTerm';
 
 /**
  * Interpolates metrics for any continuous threshold value [0.05, 0.95]
@@ -462,7 +463,9 @@ function InteractiveCurves({ lang, t, threshold, onThresholdChange }) {
       <div style={{ marginTop: '1rem', padding: '0.85rem', background: 'var(--bg-surface)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem', flexWrap: 'wrap', gap: '0.35rem' }}>
           <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-            {isFr ? 'Seuil de Décision (θ) :' : 'Decision Threshold (θ):'}{' '}
+            <GlossaryTerm termId="threshold">
+              {isFr ? 'Seuil de Décision (θ) :' : 'Decision Threshold (θ):'}
+            </GlossaryTerm>{' '}
             <span style={{ color: 'var(--accent-orange)', fontFamily: 'var(--font-mono)', fontWeight: 800 }}>
               {currentTh.toFixed(2)}
             </span>

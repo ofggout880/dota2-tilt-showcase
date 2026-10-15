@@ -17,7 +17,8 @@ export const translations = {
         psychology: "Psychologie",
         benchmark: "Benchmark ML",
         simulator: "Simulateur",
-        architecture: "Architecture"
+        architecture: "Architecture",
+        dictionary: "Dictionnaire"
       },
       status: {
         online: "API En ligne",
@@ -599,6 +600,26 @@ export const translations = {
       notEnoughMatches: "Le profil ne compte pas assez de parties standard récentes (minimum 20 matchs).",
       backendOffline: "Serveur local inaccessible. Chargement automatique du profil représentatif (mode démo).",
       genericError: "Une erreur inattendue est survenue. Veuillez réessayer."
+    },
+
+    // Dictionnaire & Lexique interactif
+    dictionary: {
+      title: "Dictionnaire & Lexique",
+      subtitle: "Comprendre les termes gaming, psychologie et machine learning en un coup d'œil.",
+      searchPlaceholder: "Rechercher un terme (ex: Tilt, GPM, Churn, Seuil)...",
+      allCategories: "Tous",
+      catGaming: "Gaming & Dota 2",
+      catPsychology: "Psychologie & Tilt",
+      catMl: "Machine Learning & Données",
+      noResults: "Aucun terme ne correspond à votre recherche.",
+      termCount: "{count} termes répertoriés",
+      close: "Fermer le dictionnaire",
+      openAria: "Ouvrir le panneau du dictionnaire",
+      badgeGaming: "Gaming",
+      badgePsychology: "Psychologie",
+      badgeMl: "Machine Learning",
+      clickToExplore: "Cliquer pour voir la définition",
+      keyTakeaway: "Impact dans l'étude"
     }
   },
 
@@ -614,7 +635,8 @@ export const translations = {
         psychology: "Psychology",
         benchmark: "ML Benchmark",
         simulator: "Simulator",
-        architecture: "Architecture"
+        architecture: "Architecture",
+        dictionary: "Dictionary"
       },
       status: {
         online: "API Online",
@@ -1196,6 +1218,26 @@ export const translations = {
       notEnoughMatches: "The profile does not have enough valid recent matches (minimum 20 games required).",
       backendOffline: "Local backend is unreachable. Automatically loaded representative profile (demo mode).",
       genericError: "An unexpected error occurred. Please try again."
+    },
+
+    // Interactive Dictionary & Glossary Drawer
+    dictionary: {
+      title: "Dictionary & Glossary",
+      subtitle: "Demystifying gaming, psychology, and machine learning terms in plain words.",
+      searchPlaceholder: "Search a term (e.g. Tilt, GPM, Churn, Threshold)...",
+      allCategories: "All",
+      catGaming: "Gaming & Dota 2",
+      catPsychology: "Psychology & Tilt",
+      catMl: "Machine Learning & Data",
+      noResults: "No terms match your search query.",
+      termCount: "{count} terms cataloged",
+      close: "Close dictionary",
+      openAria: "Open dictionary panel",
+      badgeGaming: "Gaming",
+      badgePsychology: "Psychology",
+      badgeMl: "Machine Learning",
+      clickToExplore: "Click to view definition",
+      keyTakeaway: "Study takeaway"
     }
   }
 };

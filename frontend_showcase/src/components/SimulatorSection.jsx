@@ -4,6 +4,7 @@ import { t as defaultT, translateRank, translateRiskLevel } from '../translation
 import { predictPlayer, sanitizeAccountId } from '../services/api';
 import RiskGauge from './RiskGauge';
 import FactorAttribution from './FactorAttribution';
+import GlossaryTerm from './GlossaryTerm';
 
 export const CALIBRATED_ARCHETYPES = MOCK_ARCHETYPES;
 
@@ -483,7 +484,7 @@ export default function SimulatorSection({
 
                   {/* Archetype Name & Subtitle */}
                   <div style={{ marginTop: '0.5rem' }}>
-                    <h4 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#ffffff', marginBottom: '0.25rem' }}>
+                    <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#ffffff', marginBottom: '0.25rem' }}>
                       {tr(`simulator.archetypes.${arch.id}.name`, isFr ? (arch.nameFr || arch.name_fr) : (arch.nameEn || arch.name_en))}
                     </h4>
                     <p className="archetype-desc" style={{ minHeight: '2.4em' }}>
@@ -631,7 +632,9 @@ export default function SimulatorSection({
 
                   {/* Current Streak */}
                   <div className="stat-box" style={{ padding: '0.65rem 0.5rem' }}>
-                    <span className="stat-label">{tr('simulator.telemetry.currentStreak', isFr ? 'Série Active' : 'Active Streak')}</span>
+                    <span className="stat-label">
+                      <GlossaryTerm termId="loss_streak">{tr('simulator.telemetry.currentStreak', isFr ? 'Série Active' : 'Active Streak')}</GlossaryTerm>
+                    </span>
                     <span
                       className="stat-value"
                       style={{
@@ -645,7 +648,9 @@ export default function SimulatorSection({
 
                   {/* Party Play % */}
                   <div className="stat-box" style={{ padding: '0.65rem 0.5rem' }}>
-                    <span className="stat-label">{tr('simulator.telemetry.partyPlay', isFr ? 'Jeu en Groupe' : 'Party Play')}</span>
+                    <span className="stat-label">
+                      <GlossaryTerm termId="party_size">{tr('simulator.telemetry.partyPlay', isFr ? 'Jeu en Groupe' : 'Party Play')}</GlossaryTerm>
+                    </span>
                     <span className="stat-value" style={{ fontSize: '1.15rem', color: '#ffffff' }}>
                       {activePlayer.features?.party_play_pct != null ? `${(activePlayer.features.party_play_pct * 100).toFixed(0)}%` : '--'}
                     </span>
@@ -661,7 +666,9 @@ export default function SimulatorSection({
 
                   {/* Tilt Index */}
                   <div className="stat-box" style={{ padding: '0.65rem 0.5rem' }}>
-                    <span className="stat-label">{tr('simulator.telemetry.tiltIndex', isFr ? 'Indice de Tilt' : 'Tilt Index')}</span>
+                    <span className="stat-label">
+                      <GlossaryTerm termId="tilt_index">{tr('simulator.telemetry.tiltIndex', isFr ? 'Indice de Tilt' : 'Tilt Index')}</GlossaryTerm>
+                    </span>
                     <span
                       className="stat-value"
                       style={{
