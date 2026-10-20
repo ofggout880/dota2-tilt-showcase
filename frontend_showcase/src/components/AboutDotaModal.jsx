@@ -3,13 +3,12 @@ import { useDictionary } from '../context/DictionaryContext';
 
 /**
  * AboutDotaModal Component
- * Interactive modal explaining Dota 2 context, tilt/churn mechanics,
- * and target audiences (LiveOps, Matchmaking, Recruiters & ML Engineers).
+ * Editorial article explaining Dota 2 context, tilt/churn mechanics,
+ * and project purpose in continuous prose matching the showcase editorial typography.
  */
 export default function AboutDotaModal({ lang = 'fr', t }) {
   const { isAboutOpen, closeAboutModal, openDictionary } = useDictionary();
   const modalRef = useRef(null);
-  const isFr = lang === 'fr';
 
   // Handle ESC key & scroll locking
   useEffect(() => {
@@ -63,7 +62,7 @@ export default function AboutDotaModal({ lang = 'fr', t }) {
       role="presentation"
     >
       <div
-        className="about-modal-dialog"
+        className="about-modal-dialog editorial-modal-dialog"
         role="dialog"
         aria-modal="true"
         aria-labelledby="about-modal-title"
@@ -71,22 +70,19 @@ export default function AboutDotaModal({ lang = 'fr', t }) {
         tabIndex={-1}
       >
         {/* Header Bar */}
-        <div className="about-modal-header">
-          <div className="about-modal-title-group">
-            <div className="about-modal-badge">
-              <span className="badge-sparkle">✦</span>
-              <span>{t('aboutModal.badge', lang)}</span>
-            </div>
-            <h2 id="about-modal-title" className="about-modal-title">
-              {t('aboutModal.title', lang)}
+        <div className="editorial-modal-header">
+          <div className="editorial-modal-header-left">
+            <span className="editorial-modal-eyebrow">
+              {t('aboutModal.eyebrow', lang)}
+            </span>
+            <h2 id="about-modal-title" className="editorial-modal-title">
+              <span className="title-light">{t('aboutModal.titleLight', lang)} </span>
+              <span className="title-bold">{t('aboutModal.titleBold', lang)}</span>
             </h2>
-            <p className="about-modal-subtitle">
-              {t('aboutModal.subtitle', lang)}
-            </p>
           </div>
           <button
             type="button"
-            className="about-modal-close-btn"
+            className="editorial-modal-close"
             onClick={closeAboutModal}
             aria-label={t('aboutModal.closeAria', lang)}
           >
@@ -94,108 +90,51 @@ export default function AboutDotaModal({ lang = 'fr', t }) {
           </button>
         </div>
 
-        {/* 3 Structured Explanatory Pillars */}
-        <div className="about-pillars-grid">
-          {/* Pillar 1: What is Dota 2 */}
-          <article className="about-pillar-card">
-            <div className="pillar-card-header">
-              <span className="pillar-icon" aria-hidden="true">🎮</span>
-              <div>
-                <span className="pillar-category-tag">{t('aboutModal.card1Badge', lang)}</span>
-                <h3 className="pillar-card-title">{t('aboutModal.card1Title', lang)}</h3>
-              </div>
-            </div>
-            <div className="pillar-card-body">
-              <p>{t('aboutModal.card1P1', lang)}</p>
-              <p>{t('aboutModal.card1P2', lang)}</p>
-            </div>
-            <div className="pillar-card-highlight">
-              <strong>{isFr ? 'En un mot :' : 'In short:'}</strong>{' '}
-              {isFr
-                ? 'Une intensité émotionnelle rare où une seule erreur peut anéantir 45 minutes d’efforts collectifs.'
-                : 'A rare emotional intensity where a single blunder can erase 45 minutes of collective effort.'}
-            </div>
-          </article>
+        {/* Continuous Editorial Essay Body */}
+        <div className="editorial-modal-body">
+          <p className="editorial-modal-lead">
+            {t('aboutModal.lead', lang)}
+          </p>
 
-          {/* Pillar 2: Tilt & Churn Mechanics */}
-          <article className="about-pillar-card">
-            <div className="pillar-card-header">
-              <span className="pillar-icon" aria-hidden="true">⚡</span>
-              <div>
-                <span className="pillar-category-tag">{t('aboutModal.card2Badge', lang)}</span>
-                <h3 className="pillar-card-title">{t('aboutModal.card2Title', lang)}</h3>
-              </div>
-            </div>
-            <div className="pillar-card-body">
-              <p>{t('aboutModal.card2P1', lang)}</p>
-              <p>{t('aboutModal.card2P2', lang)}</p>
-            </div>
-            <div className="pillar-card-highlight highlight-amber">
-              <strong>{isFr ? 'Découverte clé :' : 'Key discovery:'}</strong>{' '}
-              {isFr
-                ? 'Le churn n’arrive pas par hasard : il est précédé par une dégradation progressive mesurable par télémétrie.'
-                : 'Player churn never happens at random: it is preceded by progressive degradation captured via telemetry.'}
-            </div>
-          </article>
+          <div className="editorial-modal-tags" role="list">
+            <span className="editorial-tag-pill" role="listitem">{t('aboutModal.tag1', lang)}</span>
+            <span className="editorial-tag-pill" role="listitem">{t('aboutModal.tag2', lang)}</span>
+            <span className="editorial-tag-pill" role="listitem">{t('aboutModal.tag3', lang)}</span>
+            <span className="editorial-tag-pill" role="listitem">{t('aboutModal.tag4', lang)}</span>
+          </div>
 
-          {/* Pillar 3: Who is this for & Value */}
-          <article className="about-pillar-card pillar-card-accent">
-            <div className="pillar-card-header">
-              <span className="pillar-icon" aria-hidden="true">🎯</span>
-              <div>
-                <span className="pillar-category-tag">{t('aboutModal.card3Badge', lang)}</span>
-                <h3 className="pillar-card-title">{t('aboutModal.card3Title', lang)}</h3>
-              </div>
-            </div>
-            <div className="pillar-card-body pillar-audiences-list">
-              <div className="audience-item">
-                <span className="audience-bullet">01</span>
-                <div>
-                  <strong>{t('aboutModal.card3Audience1Title', lang)}</strong>
-                  <p>{t('aboutModal.card3Audience1Desc', lang)}</p>
-                </div>
-              </div>
+          <div className="editorial-modal-prose">
+            <p>{t('aboutModal.p1', lang)}</p>
+            <p>{t('aboutModal.p2', lang)}</p>
+            <p>{t('aboutModal.p3', lang)}</p>
+          </div>
 
-              <div className="audience-item">
-                <span className="audience-bullet">02</span>
-                <div>
-                  <strong>{t('aboutModal.card3Audience2Title', lang)}</strong>
-                  <p>{t('aboutModal.card3Audience2Desc', lang)}</p>
-                </div>
-              </div>
-
-              <div className="audience-item">
-                <span className="audience-bullet">03</span>
-                <div>
-                  <strong>{t('aboutModal.card3Audience3Title', lang)}</strong>
-                  <p>{t('aboutModal.card3Audience3Desc', lang)}</p>
-                </div>
-              </div>
-            </div>
-          </article>
+          <blockquote className="editorial-modal-quote">
+            <p>{t('aboutModal.quote', lang)}</p>
+          </blockquote>
         </div>
 
-        {/* Modal Action Bar */}
-        <div className="about-modal-footer">
-          <div className="about-modal-actions-left">
+        {/* Clean Editorial Footer Actions */}
+        <div className="editorial-modal-footer">
+          <div className="editorial-modal-actions-left">
             <button
               type="button"
-              className="about-action-btn about-btn-lexicon"
+              className="editorial-link-btn"
               onClick={handleOpenDict}
             >
-              📖 {t('aboutModal.actionLexicon', lang)}
+              {t('aboutModal.actionLexicon', lang)}
             </button>
             <button
               type="button"
-              className="about-action-btn about-btn-simulator"
+              className="editorial-link-btn"
               onClick={handleGoSimulator}
             >
-              ⚡ {t('aboutModal.actionSimulator', lang)}
+              {t('aboutModal.actionSimulator', lang)}
             </button>
           </div>
           <button
             type="button"
-            className="about-action-btn about-btn-close"
+            className="editorial-close-btn-text"
             onClick={closeAboutModal}
           >
             {t('aboutModal.actionClose', lang)}

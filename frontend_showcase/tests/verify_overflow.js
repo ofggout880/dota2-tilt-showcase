@@ -24,7 +24,7 @@ function sleep(ms) {
 }
 
 async function getBrowserWsUrl() {
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 35; i++) {
     try {
       const res = await fetch(`http://127.0.0.1:${CDP_PORT}/json/version`);
       if (res.ok) {
@@ -82,7 +82,7 @@ async function runOverflowTest() {
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'chrome_overflow_test_'));
 
   const chromeProc = spawn(CHROME_PATH, [
-    '--headless',
+    '--headless=new',
     `--remote-debugging-port=${CDP_PORT}`,
     '--remote-debugging-address=127.0.0.1',
     '--remote-allow-origins=*',
