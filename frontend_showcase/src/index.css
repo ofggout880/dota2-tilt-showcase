@@ -663,6 +663,41 @@ p {
   gap: clamp(0.75rem, 1.5vw, 1.25rem);
 }
 
+/* Direct "Dota 2 & Projet" Trigger in Top Navbar */
+.navbar-about-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(255, 122, 0, 0.08);
+  border: 1px solid rgba(255, 122, 0, 0.28);
+  border-radius: var(--radius-full);
+  color: var(--accent-orange);
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.navbar-about-btn:hover {
+  background: rgba(255, 122, 0, 0.18);
+  border-color: var(--accent-orange);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 0 14px rgba(255, 122, 0, 0.25);
+}
+
+@media (max-width: 640px) {
+  .navbar-about-btn span {
+    display: none;
+  }
+  .navbar-about-btn {
+    padding: 0.35rem 0.55rem;
+  }
+}
+
 /* Minimalist Language Switcher (Text only) */
 .lang-toggle-minimal {
   background: transparent;
@@ -4157,6 +4192,92 @@ p {
   font-family: var(--font-mono);
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.25);
+}
+
+/* Practical Purpose Box (Concrètement, à quoi ça sert ?) */
+.editorial-purpose-box {
+  margin: 1.5rem 0 0.5rem 0;
+  padding: 1.35rem 1.5rem;
+  background: linear-gradient(145deg, rgba(255, 122, 0, 0.06), rgba(13, 15, 20, 0.95));
+  border: 1px solid rgba(255, 122, 0, 0.25);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.editorial-purpose-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.editorial-purpose-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent-orange);
+  text-transform: uppercase;
+}
+
+.editorial-purpose-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.editorial-purpose-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.editorial-purpose-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.editorial-purpose-item:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.editorial-purpose-bullet {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.purpose-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-orange);
+  background: rgba(255, 122, 0, 0.12);
+  border: 1px solid rgba(255, 122, 0, 0.3);
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+  line-height: 1.2;
+}
+
+.purpose-item-title {
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  color: #ffffff;
+}
+
+.purpose-item-text {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
 }
 
 .editorial-modal-quote {

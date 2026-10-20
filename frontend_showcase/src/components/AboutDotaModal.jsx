@@ -48,7 +48,7 @@ export default function AboutDotaModal({ lang = 'fr', t }) {
 
   const handleGoSimulator = () => {
     closeAboutModal();
-    const el = document.querySelector('#simulator');
+    const el = document.querySelector('#archetypes') || document.querySelector('#simulator');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
@@ -195,6 +195,43 @@ export default function AboutDotaModal({ lang = 'fr', t }) {
                 This project aims to <strong className="editorial-orange">detect and model these emotional inflection points</strong> before abandonment becomes irreversible. For <strong className="editorial-orange">video game studios and LiveOps teams</strong>, predicting disengagement enables <strong className="editorial-white">proactive retention interventions</strong> before customers are permanently lost. For <strong className="editorial-orange">ethical matchmaking architects</strong>, detecting emotional distress prevents queuing tilted players into toxic lobbies, guiding them toward healthy cooldown pauses and safeguarding <strong className="editorial-white">community wellbeing</strong>. Finally, for <strong className="editorial-orange">recruiters and ML practitioners</strong>, this study represents a production-grade benchmark of predictive modeling under <strong className="editorial-orange">severe class imbalance</strong>, combining telemetry pipelines, <GlossaryTerm termId="smote">SMOTE</GlossaryTerm> balancing, and <GlossaryTerm termId="shap">SHAP</GlossaryTerm> interpretability.
               </p>
             )}
+
+            {/* Practical Purpose Section: Concrètement, à quoi ça sert ? */}
+            <div className="editorial-purpose-box">
+              <div className="editorial-purpose-header">
+                <span className="editorial-purpose-badge">VALEUR OPÉRATIONNELLE</span>
+                <h3 className="editorial-purpose-title">{t('aboutModal.purposeTitle', lang)}</h3>
+              </div>
+
+              <div className="editorial-purpose-grid">
+                {/* Pillar 1: F2P Economics */}
+                <div className="editorial-purpose-item">
+                  <div className="editorial-purpose-bullet">
+                    <span className="purpose-num">01</span>
+                    <strong className="purpose-item-title">{t('aboutModal.purposePillar1Title', lang)}</strong>
+                  </div>
+                  <p className="purpose-item-text">{t('aboutModal.purposePillar1Desc', lang)}</p>
+                </div>
+
+                {/* Pillar 2: Mental Health & Matchmaking */}
+                <div className="editorial-purpose-item">
+                  <div className="editorial-purpose-bullet">
+                    <span className="purpose-num">02</span>
+                    <strong className="purpose-item-title">{t('aboutModal.purposePillar2Title', lang)}</strong>
+                  </div>
+                  <p className="purpose-item-text">{t('aboutModal.purposePillar2Desc', lang)}</p>
+                </div>
+
+                {/* Pillar 3: Applied ML */}
+                <div className="editorial-purpose-item">
+                  <div className="editorial-purpose-bullet">
+                    <span className="purpose-num">03</span>
+                    <strong className="purpose-item-title">{t('aboutModal.purposePillar3Title', lang)}</strong>
+                  </div>
+                  <p className="purpose-item-text">{t('aboutModal.purposePillar3Desc', lang)}</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <blockquote className="editorial-modal-quote">

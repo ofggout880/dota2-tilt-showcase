@@ -1,7 +1,6 @@
-import React, { useState, useId } from 'react';
+import React, { useState } from 'react';
 import { MOCK_ARCHETYPES } from '../data/mockData';
 import { t as defaultT, translateRank, translateRiskLevel } from '../translations';
-import { predictPlayer, sanitizeAccountId } from '../services/api';
 import RiskGauge from './RiskGauge';
 import FactorAttribution from './FactorAttribution';
 import GlossaryTerm from './GlossaryTerm';
@@ -24,14 +23,9 @@ export default function SimulatorSection({
   initialArchetypeId = 'tilting_player',
   activePlayer: activePlayerProp,
   onSelectArchetype: onSelectArchetypeProp,
-  onPredictPlayer: onPredictPlayerProp,
-  isPredicting: isPredictingProp,
-  predictionError: predictionErrorProp,
-  backendStatus = 'checking',
   archetypes: archetypesProp
 }) {
   const isFr = lang === 'fr';
-  const inputId = useId();
 
   // Translation helper wrapper
   const tr = (key, fallback) => {
@@ -55,127 +49,12 @@ export default function SimulatorSection({
   const activePlayer = activePlayerProp || internalActivePlayer;
   const selectedArchetypeId = activePlayer?.id || internalSelectedArchetypeId;
 
-  // Search Input State
-  const [inputVal, setInputVal] = useState(activePlayer.accountId || activePlayer.account_id || '835397971');
-  const [internalIsLoading, setInternalIsLoading] = useState(false);
-  const [internalErrorNotice, setInternalErrorNotice] = useState(null);
-  const [isOfflineFallback, setIsOfflineFallback] = useState(false);
-
-  const isLoading = typeof isPredictingProp === 'boolean' ? isPredictingProp : internalIsLoading;
-  const errorNotice = predictionErrorProp ? { type: 'api', message: tr(predictionErrorProp, predictionErrorProp) } : internalErrorNotice;
-
-  // Sync input value when archetype changes
+  // Archetype selection handler
   const handleSelectArchetype = (archetype) => {
     setInternalSelectedArchetypeId(archetype.id);
     setInternalActivePlayer(archetype);
-    setInputVal(archetype.accountId || archetype.account_id || '');
-    setInternalErrorNotice(null);
-    setIsOfflineFallback(false);
     if (typeof onSelectArchetypeProp === 'function') {
       onSelectArchetypeProp(archetype);
-    }
-  };
-
-  // Handle Input change with strict numeric filtering & 64-bit Steam ID support
-  const handleInputChange = (e) => {
-    let rawVal = e.target.value;
-    if (rawVal.includes('.')) {
-      rawVal = rawVal.split('.')[0];
-    }
-    const numericVal = rawVal.replace(/\D/g, '').slice(0, 17);
-    setInputVal(numericVal);
-    if (internalErrorNotice) setInternalErrorNotice(null);
-  };
-
-  // Clear Input Action
-  const handleClearInput = () => {
-    setInputVal('');
-    setInternalErrorNotice(null);
-  };
-
-  // Quick preset click
-  const handlePresetClick = (presetId) => {
-    const target = archetypes.find(
-      (a) => a.accountId === presetId || a.account_id === presetId || a.id === presetId || a.legacyId === presetId
-    );
-    if (target) {
-      handleSelectArchetype(target);
-    } else {
-      setInputVal(presetId);
-    }
-  };
-
-  // Execute Search / Predict Lookup
-  const handleSearch = async (e) => {
-    if (e) e.preventDefault();
-    const cleanId = inputVal.trim();
-
-    const sanitizedId = sanitizeAccountId(cleanId);
-
-    // 1. Numeric & Length Validation
-    if (!sanitizedId) {
-      setInternalErrorNotice({
-        type: 'validation',
-        message: isFr
-          ? 'Veuillez saisir un Account ID Steam / Dota 2 valide (3 à 10 chiffres ou SteamID64 à 17 chiffres, ex: 835397971).'
-          : 'Please enter a valid numeric Dota 2 / Steam Account ID (3 to 10 digits or 17-digit SteamID64, e.g. 835397971).'
-      });
-      return;
-    }
-
-    if (sanitizedId !== cleanId) {
-      setInputVal(sanitizedId);
-    }
-
-    // 2. Check if entered ID matches one of our calibrated archetypes directly
-    const directMatch = archetypes.find(
-      (a) => a.accountId === cleanId || a.account_id === cleanId
-    );
-    if (directMatch) {
-      handleSelectArchetype(directMatch);
-      return;
-    }
-
-    // 3. Delegate to external onPredictPlayerProp if provided, otherwise run predictPlayer
-    if (typeof onPredictPlayerProp === 'function') {
-      onPredictPlayerProp(sanitizedId || cleanId);
-      return;
-    }
-
-    setInternalIsLoading(true);
-    setInternalErrorNotice(null);
-    setIsOfflineFallback(false);
-
-    try {
-      const result = await predictPlayer(sanitizedId || cleanId);
-      if (result && result.success !== false) {
-        setInternalSelectedArchetypeId(null);
-        setInternalActivePlayer(result);
-        if (result.isOffline || result.isSynthesized) {
-          setIsOfflineFallback(true);
-          setInternalErrorNotice({
-            type: 'offline',
-            message: isFr
-              ? 'Serveur API local inaccessible ou profil privé. Inférence calibrée hors-ligne chargée.'
-              : 'Local API server unreachable or private Steam profile. Calibrated offline inference loaded.'
-          });
-        }
-      } else {
-        setInternalErrorNotice({
-          type: 'validation',
-          message: tr(result?.errorKey, isFr ? 'Erreur lors de la prédiction.' : 'Error during prediction.')
-        });
-      }
-    } catch {
-      setIsOfflineFallback(true);
-      setInternalErrorNotice({
-        type: 'offline',
-        message: isFr
-          ? 'Serveur API local inaccessible. Mode démo calibré chargé.'
-          : 'Local API server unreachable. Calibrated demo mode loaded.'
-      });
-    } finally {
-      setInternalIsLoading(false);
     }
   };
 
@@ -183,247 +62,42 @@ export default function SimulatorSection({
   const riskInfo = translateRiskLevel(activePlayer.churn_probability ?? activePlayer.probability ?? 0, lang);
 
   return (
-    <section id="simulator" className="section" aria-labelledby="simulator-heading">
+    <section id="archetypes" className="section" aria-labelledby="archetypes-heading">
+      <div id="simulator" style={{ position: 'relative', top: '-90px' }} aria-hidden="true" />
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
           <div className="badge badge-orange" style={{ marginBottom: '0.75rem' }}>
             <span className="badge-dot" />
-            <span>{isFr ? 'INFÉRENCE & PROFILS TYPES' : 'LIVE INFERENCE & ARCHETYPES'}</span>
+            <span>{isFr ? 'PROFILS COMPORTEMENTAUX' : 'BEHAVIORAL ARCHETYPES'}</span>
           </div>
-          <h2 id="simulator-heading">
-            {tr('simulator.sectionTitle', isFr ? 'Simulateur Interactif & Archétypes Joueurs' : 'Interactive Risk Simulator & Player Archetypes')}
+          <h2 id="archetypes-heading">
+            {tr('simulator.sectionTitle', isFr ? '4 Archétypes Comportementaux & Profils de Risque' : '4 Behavioral Player Archetypes & Risk Profiling')}
           </h2>
           <p>
             {tr(
               'simulator.sectionSubtitle',
               isFr
-                ? 'Évaluez la probabilité de churn en direct via l\'API ou explorez instantanément 4 profils types calibrés.'
-                : 'Evaluate real-time churn probability via live API or test 4 calibrated player archetypes.'
+                ? 'Diagnostic prédictif, télémétrie approfondie et explicabilité SHAP sur les 4 profils types identifiés par notre modèle.'
+                : 'Predictive diagnostics, deep telemetry indicators, and SHAP explainability across 4 calibrated player archetypes.'
             )}
           </p>
         </div>
 
-        {/* --- 1. Steam Account ID Lookup Interface --- */}
-        <div
-          className="glass-card"
-          style={{
-            maxWidth: '860px',
-            margin: '0 auto 2.5rem auto',
-            padding: 'clamp(1.25rem, 3vw, 2rem)'
-          }}
-        >
-          <form onSubmit={handleSearch} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
-              <label
-                htmlFor={inputId}
-                style={{
-                  fontSize: '0.875rem',
-                  fontWeight: 700,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.05em',
-                  color: 'var(--text-heading)'
-                }}
-              >
-                {tr('simulator.query.label', isFr ? 'Interrogation par ID de Compte Dota 2 / Steam (32-bit)' : 'Query by Dota 2 / Steam 32-bit Account ID')}
-              </label>
-
-              {/* Status Indicator */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
-                <span
-                  style={{
-                    width: '8px',
-                    height: '8px',
-                    borderRadius: '50%',
-                    backgroundColor: isOfflineFallback ? 'var(--accent-amber)' : 'var(--accent-emerald)',
-                    boxShadow: isOfflineFallback ? '0 0 8px var(--accent-amber)' : '0 0 8px var(--accent-emerald)'
-                  }}
-                />
-                <span>
-                  {isOfflineFallback
-                    ? (isFr ? 'Mode Démo Calibré' : 'Calibrated Demo Mode')
-                    : (isFr ? 'Prêt pour l\'inférence' : 'Ready for inference')}
-                </span>
-              </div>
-            </div>
-
-            {/* Input Bar & Actions */}
-            <div
-              style={{
-                display: 'flex',
-                gap: '0.75rem',
-                flexWrap: 'wrap',
-                alignItems: 'stretch'
-              }}
-            >
-              <div style={{ position: 'relative', flex: '1 1 280px', minWidth: '220px' }}>
-                <input
-                  id={inputId}
-                  type="text"
-                  inputMode="numeric"
-                  pattern="[0-9]*"
-                  className="input-field"
-                  placeholder={tr('simulator.query.placeholder', isFr ? 'Ex: 835397971, 224109642...' : 'e.g. 835397971, 224109642...')}
-                  value={inputVal}
-                  onChange={handleInputChange}
-                  disabled={isLoading}
-                  style={{
-                    paddingRight: inputVal ? '2.5rem' : '1rem',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '1.05rem',
-                    letterSpacing: '0.03em'
-                  }}
-                />
-                {inputVal && !isLoading && (
-                  <button
-                    type="button"
-                    onClick={handleClearInput}
-                    aria-label={isFr ? 'Effacer la saisie' : 'Clear input'}
-                    style={{
-                      position: 'absolute',
-                      right: '0.75rem',
-                      top: '50%',
-                      transform: 'translateY(-50%)',
-                      background: 'none',
-                      border: 'none',
-                      color: 'var(--text-muted)',
-                      cursor: 'pointer',
-                      padding: '0.25rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      borderRadius: '50%',
-                      transition: 'color var(--transition-fast)'
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
-                  >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                      <line x1="6" y1="6" x2="18" y2="18" />
-                    </svg>
-                  </button>
-                )}
-              </div>
-
-              {/* Predict CTA Button */}
-              <button
-                type="submit"
-                className="btn-primary"
-                disabled={isLoading || !inputVal.trim()}
-                style={{
-                  flex: '0 0 auto',
-                  minWidth: '180px'
-                }}
-              >
-                {isLoading ? (
-                  <>
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      style={{ animation: 'spin 1s linear infinite' }}
-                    >
-                      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
-                    </svg>
-                    <span>{tr('simulator.query.btnLoading', isFr ? 'Inférence...' : 'Analyzing...')}</span>
-                  </>
-                ) : (
-                  <>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="11" cy="11" r="8" />
-                      <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                    </svg>
-                    <span>{tr('simulator.query.btnSubmit', isFr ? 'Analyser le Joueur' : 'Analyze Player')}</span>
-                  </>
-                )}
-              </button>
-            </div>
-
-            {/* Clickable Quick Suggestions */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap', marginTop: '0.25rem' }}>
-              <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                {tr('simulator.query.quickFillLabel', isFr ? 'Suggestions Rapides :' : 'Quick Presets:')}
-              </span>
-              {archetypes.map((arch) => {
-                const archIdVal = arch.accountId || arch.account_id;
-                const isSelectedPreset = inputVal === archIdVal;
-                const shortLabel = isFr
-                  ? (arch.nameFr?.split(' ')[2] || arch.nameFr || arch.id)
-                  : (arch.nameEn?.split(' ')[1] || arch.nameEn || arch.id);
-
-                return (
-                  <button
-                    key={arch.id}
-                    type="button"
-                    onClick={() => handlePresetClick(archIdVal)}
-                    style={{
-                      background: isSelectedPreset ? 'var(--accent-orange-alpha)' : 'var(--bg-card)',
-                      color: isSelectedPreset ? 'var(--accent-orange)' : 'var(--text-secondary)',
-                      border: `1px solid ${isSelectedPreset ? 'var(--accent-orange)' : 'var(--border-subtle)'}`,
-                      borderRadius: 'var(--radius-full)',
-                      padding: '0.25rem 0.65rem',
-                      fontSize: '0.75rem',
-                      fontFamily: 'var(--font-mono)',
-                      cursor: 'pointer',
-                      transition: 'all var(--transition-fast)'
-                    }}
-                  >
-                    {archIdVal} ({shortLabel})
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Error / Offline Notice Callout */}
-            {errorNotice && (
-              <div
-                style={{
-                  marginTop: '0.5rem',
-                  padding: '0.85rem 1.15rem',
-                  borderRadius: 'var(--radius-md)',
-                  background: errorNotice.type === 'validation' ? 'rgba(239, 68, 68, 0.12)' : 'rgba(245, 158, 11, 0.12)',
-                  border: `1px solid ${errorNotice.type === 'validation' ? 'rgba(239, 68, 68, 0.35)' : 'rgba(245, 158, 11, 0.35)'}`,
-                  color: errorNotice.type === 'validation' ? 'var(--accent-rose)' : 'var(--accent-amber)',
-                  fontSize: '0.8125rem',
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: '0.75rem'
-                }}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: '2px' }}>
-                  <circle cx="12" cy="12" r="10" />
-                  <line x1="12" y1="8" x2="12" y2="12" />
-                  <line x1="12" y1="16" x2="12.01" y2="16" />
-                </svg>
-                <div style={{ flex: 1 }}>
-                  <strong>{errorNotice.type === 'validation' ? (isFr ? 'Format Invalide : ' : 'Invalid Format: ') : (isFr ? 'Information Démo : ' : 'Demo Notice: ')}</strong>
-                  {errorNotice.message}
-                </div>
-              </div>
-            )}
-          </form>
-        </div>
-
-        {/* --- 2. The 4 Calibrated 1-Click Archetypes --- */}
-        <div style={{ marginBottom: '1.25rem' }}>
+        {/* --- The 4 Calibrated 1-Click Archetypes --- */}
+        <div style={{ marginBottom: '1.75rem' }}>
           <h3
             style={{
-              fontSize: '1rem',
+              fontSize: '0.92rem',
               fontWeight: 700,
               textTransform: 'uppercase',
               letterSpacing: '0.06em',
               color: 'var(--text-secondary)',
-              marginBottom: '1rem',
+              marginBottom: '1.25rem',
               textAlign: 'center'
             }}
           >
-            {tr('simulator.archetypesTitle', isFr ? 'Ou sélectionnez un Archétype en 1 Clic :' : 'Or select a 1-Click Player Archetype:')}
+            {tr('simulator.archetypesTitle', isFr ? 'Sélectionnez un profil pour explorer son diagnostic complet :' : 'Select a player archetype to explore full diagnostics:')}
           </h3>
 
           <div className="grid-4" style={{ gap: '1.25rem' }}>

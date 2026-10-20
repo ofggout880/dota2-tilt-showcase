@@ -16,7 +16,7 @@ export const translations = {
         kpis: "Indicateurs Clés",
         psychology: "Psychologie",
         benchmark: "Benchmark ML",
-        simulator: "Simulateur",
+        simulator: "Archétypes",
         architecture: "Architecture",
         dictionary: "Dictionnaire"
       },
@@ -48,7 +48,7 @@ export const translations = {
       titleHighlight: "par Télémétrie Comportementale",
       subtitle: "Modélisation prédictive de l'inactivité à 14 jours sur 16 981 joueurs compétitifs. Détection des points de rupture psychologique (séries de défaites, ragequits, sessions nocturnes) pour guider des interventions bienveillantes de matchmaking sans falsifier l'équité sportive.",
       ctaExplore: "Explorer l'Étude",
-      ctaSimulator: "Tester le Simulateur",
+      ctaSimulator: "Explorer les 4 Archétypes",
       ctaBenchmark: "Benchmark ML & Modèles",
       pillars: {
         churn: {
@@ -301,8 +301,8 @@ export const translations = {
 
     // Interactive Simulator & Archetypes
     simulator: {
-      sectionTitle: "Simulateur Interactif & Archétypes Joueurs",
-      sectionSubtitle: "Évaluez la probabilité de churn en direct via l'API ou explorez instantanément 4 profils types calibrés.",
+      sectionTitle: "4 Archétypes Comportementaux & Profils de Risque",
+      sectionSubtitle: "Diagnostic prédictif, télémétrie approfondie et explicabilité SHAP sur les 4 profils types identifiés par notre modèle.",
       query: {
         label: "Interrogation par ID de Compte Dota 2 / Steam (32-bit)",
         placeholder: "Ex: 835397971, 224109642, 175397696, 101438338...",
@@ -311,7 +311,7 @@ export const translations = {
         clear: "Effacer",
         quickFillLabel: "Suggestions 1-Clic :"
       },
-      archetypesTitle: "Ou sélectionnez un Archétype en 1 Clic :",
+      archetypesTitle: "Sélectionnez un profil pour explorer son diagnostic complet :",
       archetypes: {
         tilting_player: {
           name: "Le Joueur en Tilt Aigu",
@@ -643,8 +643,15 @@ export const translations = {
       tag2: "Horizon Churn 14J",
       tag3: "Matchmaking Éthique",
       tag4: "16 981 Profils",
+      purposeTitle: "Concrètement, à quoi ça sert ? (3 Impacts Majeurs)",
+      purposePillar1Title: "1. Économie & Rétention F2P (Pour l'Éditeur)",
+      purposePillar1Desc: "Dans un jeu Free-to-Play, acquérir un utilisateur coûte 5 à 7 fois plus cher que d'en retenir un. Ce modèle permet aux équipes LiveOps d'identifier la rupture avant la désinstallation et d'injecter des actions de rétention chirurgicales (récompenses de réconfort, quêtes faciles, cosmétiques gratuits) exactement au moment où l'engagement décroche.",
+      purposePillar2Title: "2. Matchmaking Éthique & Santé Mentale (Pour le Joueur)",
+      purposePillar2Desc: "Les MOBAs compétitifs favorisent le tilt et les sessions nocturnes compulsives toxiques. Plutôt que d'enfermer un joueur agacé dans des files d'attente punitives où il ruinera la partie de 9 autres personnes, le système peut lui suggérer une pause salutaire ou lui assigner un salon protégé avec des coéquipiers bienveillants.",
+      purposePillar3Title: "3. Ingénierie & Démonstration Machine Learning (Pour la Data)",
+      purposePillar3Desc: "Démontrer comment transformer des flux de logs asymétriques et déséquilibrés (seulement 13% de churn réel) en un système de décision prédictif temps réel interprétable grâce à SHAP. Zéro boîte noire : chaque probabilité est directement justifiée par des causes télémétriques tangibles.",
       actionLexicon: "Consulter le lexique complet →",
-      actionSimulator: "Accéder au simulateur →",
+      actionSimulator: "Explorer les 4 Profils Types →",
       actionClose: "Fermer la vue",
       closeAria: "Fermer la fenêtre d'information"
     },
@@ -697,7 +704,7 @@ export const translations = {
         kpis: "Key Metrics",
         psychology: "Psychology",
         benchmark: "ML Benchmark",
-        simulator: "Simulator",
+        simulator: "Archetypes",
         architecture: "Architecture",
         dictionary: "Dictionary"
       },
@@ -729,7 +736,7 @@ export const translations = {
       titleHighlight: "via Behavioral Telemetry",
       subtitle: "Predictive modeling of 14-day inactivity across 16,981 competitive players. Detecting psychological breaking points (loss streaks, ragequits, nocturnal sessions) to guide proactive, compassionate matchmaking interventions without compromising competitive integrity.",
       ctaExplore: "Explore Study",
-      ctaSimulator: "Test Simulator",
+      ctaSimulator: "Explore 4 Archetypes",
       ctaBenchmark: "ML Benchmark & Models",
       pillars: {
         churn: {
@@ -982,8 +989,8 @@ export const translations = {
 
     // Interactive Simulator & Archetypes
     simulator: {
-      sectionTitle: "Interactive Risk Simulator & Player Archetypes",
-      sectionSubtitle: "Evaluate real-time churn probability via live API or test 4 calibrated player archetypes.",
+      sectionTitle: "4 Behavioral Player Archetypes & Risk Profiling",
+      sectionSubtitle: "Predictive diagnostics, deep telemetry indicators, and SHAP explainability across 4 calibrated player archetypes.",
       query: {
         label: "Query by Dota 2 / Steam 32-bit Account ID",
         placeholder: "e.g. 835397971, 224109642, 175397696, 101438338...",
@@ -992,7 +999,7 @@ export const translations = {
         clear: "Clear",
         quickFillLabel: "1-Click Presets:"
       },
-      archetypesTitle: "Or select a 1-Click Player Archetype:",
+      archetypesTitle: "Select a player archetype to explore full diagnostics:",
       archetypes: {
         tilting_player: {
           name: "The Tilting Player",
@@ -1324,8 +1331,15 @@ export const translations = {
       tag2: "14-Day Churn Horizon",
       tag3: "Ethical Matchmaking",
       tag4: "16,981 Profiles",
+      purposeTitle: "What is this project actually for? (3 Core Impacts)",
+      purposePillar1Title: "1. F2P Economics & Retention (For Studios)",
+      purposePillar1Desc: "In Free-to-Play titles, acquiring a new player costs 5 to 7 times more than retaining an existing one. This model empowers LiveOps teams to detect disengagement before uninstallation and trigger surgical retention mechanics (compassionate drops, relaxed quests, personalized rewards) exactly when momentum drops.",
+      purposePillar2Title: "2. Ethical Matchmaking & Mental Health (For Players)",
+      purposePillar2Desc: "Competitive MOBAs naturally induce tilt and compulsive nocturnal revenge-queuing. Instead of tossing an agitated player into punitive lobbies where they ruin the match for 9 peers, the platform can recommend a healthy break or route them into composed lobbies with high-behavior-score teammates.",
+      purposePillar3Title: "3. Applied ML Engineering (For Data Teams)",
+      purposePillar3Desc: "Demonstrating how to convert raw, heavily imbalanced telemetry streams (only 13% ground-truth churn) into an interpretable real-time decision framework via SHAP. Zero black-box opacity: every prediction is instantly audited with tangible behavioral root causes.",
       actionLexicon: "Explore full glossary →",
-      actionSimulator: "Open live simulator →",
+      actionSimulator: "Explore the 4 Archetypes →",
       actionClose: "Close view",
       closeAria: "Close information modal"
     },

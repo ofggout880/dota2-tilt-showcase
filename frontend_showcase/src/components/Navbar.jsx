@@ -37,7 +37,7 @@ export default function Navbar({
     { href: '#kpis', label: t('nav.links.kpis', lang) },
     { href: '#psychology', label: t('nav.links.psychology', lang) },
     { href: '#benchmark', label: t('nav.links.benchmark', lang) },
-    { href: '#simulator', label: t('nav.links.simulator', lang) },
+    { href: '#archetypes', label: t('nav.links.simulator', lang) },
     { href: '#architecture', label: t('nav.links.architecture', lang) }
   ];
 
@@ -165,8 +165,22 @@ export default function Navbar({
           </nav>
         </div>
 
-        {/* Right Side: Sleek Language Switcher + Minimalist Burger Button */}
+        {/* Right Side: What is Dota 2 Pill + Sleek Language Switcher + Minimalist Burger Button */}
         <div className="navbar-actions">
+          {/* Direct "C'est quoi Dota 2 & le Projet ?" Trigger in Top Navigation */}
+          <button
+            type="button"
+            className="navbar-about-btn"
+            onClick={openAboutModal}
+            aria-label={lang === 'fr' ? 'Découvrir Dota 2 & le projet' : 'What is Dota 2 & the project'}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+            </svg>
+            <span>{lang === 'fr' ? 'Dota 2 & Projet' : 'Dota 2 & Project'}</span>
+          </button>
+
           {/* Minimalist Lang Toggle */}
           <button
             type="button"

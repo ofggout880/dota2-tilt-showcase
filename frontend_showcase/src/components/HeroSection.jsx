@@ -86,9 +86,9 @@ export default function HeroSection({ lang, t }) {
         {/* Signature Dual-Box Action Button Row */}
         <div className="hero-actions-bar">
           <a
-            href="#simulator"
+            href="#archetypes"
             className="hero-studio-cta"
-            onClick={(e) => handleScrollTo(e, '#simulator')}
+            onClick={(e) => handleScrollTo(e, '#archetypes')}
           >
             <span className="cta-icon-sq" aria-hidden="true">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -102,7 +102,7 @@ export default function HeroSection({ lang, t }) {
             </span>
             <span className="cta-labels">
               <span className="cta-main-text">{t('hero.ctaSimulator', lang)}</span>
-              <span className="cta-sub-text">{isFr ? 'Simulateur Temps Réel' : 'Live Inference Sandbox'}</span>
+              <span className="cta-sub-text">{isFr ? '4 Profils Types Analysés' : '4 Analyzed Archetypes'}</span>
             </span>
           </a>
 
