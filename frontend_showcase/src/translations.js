@@ -620,6 +620,40 @@ export const translations = {
       badgeMl: "Machine Learning",
       clickToExplore: "Cliquer pour voir la définition",
       keyTakeaway: "Impact dans l'étude"
+    },
+
+    // Modale Découverte : C'est quoi Dota 2 & à qui sert cet outil
+    aboutModal: {
+      triggerToast: "🎮 Découvrir Dota 2 & le rôle de l'outil →",
+      triggerHero: "🎮 Découvrir Dota 2 & l'utilité du projet",
+      triggerBurger: "🎮 C'est quoi Dota 2 & l'outil ?",
+      triggerBurgerSub: "Guide express en 1 min pour non-initiés et recruteurs",
+      triggerDrawer: "Nouveau sur Dota 2 ?",
+      triggerDrawerSub: "Comprendre le jeu, la psychologie et la valeur métier de l'étude",
+      triggerDrawerBtn: "Découvrir en 1 min →",
+      badge: "GUIDE DÉCOUVERTE • 1 MIN",
+      title: "Comprendre Dota 2 & la Raison d'Être du Projet",
+      subtitle: "Une synthèse claire pour les recruteurs et les personnes non familières avec le gaming compétitif.",
+      closeAria: "Fermer la fenêtre d'information",
+      card1Title: "1. Qu'est-ce que Dota 2 ?",
+      card1Badge: "Le Jeu & l'Environnement",
+      card1P1: "Édité par Valve Corporation, Dota 2 est l'un des piliers mondiaux de l'e-sport (MOBA 5 contre 5). Deux équipes s'affrontent sur une carte fermée pendant 30 à 60 minutes avec pour but ultime de détruire la forteresse adverse (l'Ancien).",
+      card1P2: "Avec plus de 120 héros et des milliers de mécaniques, la charge cognitive est immense. La victoire dépend entièrement de 5 joueurs : si un coéquipier lâche prise ou s'énerve, le match devient une épreuve punitive.",
+      card2Title: "2. Le Tilt & le Churn expliqués simplement",
+      card2Badge: "Mécanismes Psychologiques",
+      card2P1: "Le Tilt : État de frustration et d'épuisement émotionnel où le joueur perd sa lucidité (défaites consécutives, toxicité, ragequits). Il continue souvent à jouer compulsivement pour se refaire, aggravant sa spirale négative.",
+      card2P2: "Le Churn : Après un match de rupture émotionnelle (notre Match T), le joueur cesse brutalement de jouer pendant au moins 14 jours ou désinstalle le jeu. Notre modèle démontre que ce départ n'est pas aléatoire : il est précédé de signaux télémétriques mesurables.",
+      card3Title: "3. À qui s'adresse cet Outil & Pourquoi c'est Vital ?",
+      card3Badge: "Valeur Métier & Décisionnaires",
+      card3Audience1Title: "Équipes LiveOps & Studios (Rétention AAA)",
+      card3Audience1Desc: "Sur un jeu free-to-play, acquérir un joueur coûte cher. Anticiper le churn avant la désinstallation permet de déclencher des interventions bienveillantes (quêtes adaptées, pauses incitatives) sans attendre qu'il soit trop tard.",
+      card3Audience2Title: "Systèmes de Matchmaking Éthique (Santé des Joueurs)",
+      card3Audience2Desc: "Détecter un joueur en plein épisode de tilt permet d'éviter de l'associer à d'autres joueurs frustrés, protégeant ainsi l'écosystème global de la toxicité et du burn-out compétitif.",
+      card3Audience3Title: "Recruteurs & Équipes Data / ML (Cas d'école)",
+      card3Audience3Desc: "Une démonstration concrète d'ingénierie ML de bout en bout : télémétrie asynchrone, rééquilibrage SMOTE, explicabilité SHAP et seuil de décision économique asymétrique (θ* = 0.36) pour 85% de rappel.",
+      actionLexicon: "Consulter le Dictionnaire (21 termes) →",
+      actionSimulator: "Tester le Simulateur Temps Réel →",
+      actionClose: "Compris / Fermer"
     }
   },
 
@@ -1238,6 +1272,40 @@ export const translations = {
       badgeMl: "Machine Learning",
       clickToExplore: "Click to view definition",
       keyTakeaway: "Study takeaway"
+    },
+
+    // Discovery Modal: What is Dota 2 & who is this tool for
+    aboutModal: {
+      triggerToast: "🎮 Discover Dota 2 & the purpose of this tool →",
+      triggerHero: "🎮 Discover Dota 2 & study purpose",
+      triggerBurger: "🎮 What is Dota 2 & this tool?",
+      triggerBurgerSub: "1-min brief for recruiters & newcomers",
+      triggerDrawer: "New to Dota 2?",
+      triggerDrawerSub: "Understand the game, psychology & business impact",
+      triggerDrawerBtn: "Discover in 1 min →",
+      badge: "DISCOVERY BRIEF • 1 MIN",
+      title: "Understanding Dota 2 & the Purpose of this Study",
+      subtitle: "A concise primer for recruiters and professionals outside the competitive gaming sphere.",
+      closeAria: "Close information modal",
+      card1Title: "1. What is Dota 2?",
+      card1Badge: "The Game & Environment",
+      card1P1: "Created by Valve Corporation, Dota 2 is a flagship title of global e-sports (5v5 MOBA). Two teams battle on a closed map for 30 to 60 minutes aiming to destroy the opposing stronghold (the Ancient).",
+      card1P2: "With over 120 heroes and thousands of mechanics, cognitive load is extreme. Victory relies entirely on all 5 players: if one teammate tilts or gives up, the match turns into a punishing ordeal.",
+      card2Title: "2. Tilt & Churn Explained Simply",
+      card2Badge: "Psychological Dynamics",
+      card2P1: "Tilt: A state of emotional exhaustion and frustration where a player loses composure (consecutive losses, toxicity, ragequits). Players often keep queuing compulsively to avenge losses, deepening the negative spiral.",
+      card2P2: "Churn: Following an emotional breaking-point game (our Match T), the player abruptly stops playing for at least 14 days or uninstalls. Our model proves this departure is never random: it leaves measurable telemetry footprints.",
+      card3Title: "3. Who is this Tool for & Why is it Critical?",
+      card3Badge: "Business Value & Stakeholders",
+      card3Audience1Title: "LiveOps & Studio Teams (AAA Retention)",
+      card3Audience1Desc: "In free-to-play ecosystems, acquiring players is expensive. Predicting churn before uninstallation enables benevolent interventions (tailored quests, incentive breaks) before players are lost forever.",
+      card3Audience2Title: "Ethical Matchmaking (Player Wellbeing)",
+      card3Audience2Desc: "Detecting a player in an active tilt episode prevents matching them with other frustrated players, actively shielding the broader community from toxicity and competitive burn-out.",
+      card3Audience3Title: "Recruiters & Data/ML Teams (Production Benchmark)",
+      card3Audience3Desc: "A concrete end-to-end production ML benchmark: asynchronous telemetry, SMOTE balancing, SHAP interpretability, and an asymmetric economic decision threshold (θ* = 0.36) securing 85% recall.",
+      actionLexicon: "Explore Dictionary (21 terms) →",
+      actionSimulator: "Test Live Simulator →",
+      actionClose: "Got it / Close"
     }
   }
 };

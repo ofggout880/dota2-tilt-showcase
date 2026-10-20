@@ -24,7 +24,7 @@ export default function Navbar({
   const [statusInfo, setStatusInfo] = useState(() => getBackendStatusDetails());
   const [copiedCmd, setCopiedCmd] = useState(false);
 
-  const { openDictionary } = useDictionary();
+  const { openDictionary, openAboutModal } = useDictionary();
   const burgerDrawerRef = useRef(null);
 
   const toggleLanguage = () => {
@@ -233,7 +233,35 @@ export default function Navbar({
             </div>
 
             <div className="burger-drawer-body">
-              {/* 1. Interactive Dictionary Card */}
+              {/* 1. About Dota 2 & Project Purpose Card */}
+              <div className="burger-section">
+                <span className="burger-section-label">
+                  {lang === 'fr' ? 'Nouveau sur Dota 2 ?' : 'New to Dota 2?'}
+                </span>
+                <button
+                  type="button"
+                  className="burger-card-btn burger-about-card"
+                  onClick={() => {
+                    setBurgerOpen(false);
+                    openAboutModal();
+                  }}
+                >
+                  <div className="burger-card-header">
+                    <span className="burger-card-icon" aria-hidden="true">🎮</span>
+                    <div className="burger-card-titles">
+                      <span className="burger-card-title">{t('aboutModal.triggerBurger', lang)}</span>
+                      <span className="burger-card-sub">
+                        {t('aboutModal.triggerBurgerSub', lang)}
+                      </span>
+                    </div>
+                  </div>
+                  <span className="burger-card-arrow">
+                    {lang === 'fr' ? 'Découvrir en 1 min →' : 'Discover in 1 min →'}
+                  </span>
+                </button>
+              </div>
+
+              {/* 2. Interactive Dictionary Card */}
               <div className="burger-section">
                 <span className="burger-section-label">
                   {lang === 'fr' ? 'Lexique & Définitions' : 'Glossary & Definitions'}

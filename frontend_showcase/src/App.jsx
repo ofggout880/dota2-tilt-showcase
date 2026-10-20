@@ -9,6 +9,7 @@ import SimulatorSection from './components/SimulatorSection';
 import ArchitectureSection from './components/ArchitectureSection';
 import DictionaryDrawer from './components/DictionaryDrawer';
 import WelcomeDictionaryToast from './components/WelcomeDictionaryToast';
+import AboutDotaModal from './components/AboutDotaModal';
 import { DictionaryProvider } from './context/DictionaryContext';
 import { t } from './translations';
 import { checkBackendHealth, getMlMetrics, getMlVisualizations } from './services/api';
@@ -194,6 +195,9 @@ export default function App() {
 
           {/* Welcome Interactive Dictionary Toast */}
           <WelcomeDictionaryToast lang={lang} t={t} />
+
+          {/* About Dota 2 & Project Purpose Modal */}
+          <AboutDotaModal lang={lang} t={t} />
 
           {/* Footer Shell */}
           <Footer lang={lang} t={t} />

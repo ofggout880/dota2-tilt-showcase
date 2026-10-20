@@ -8,7 +8,7 @@ import { DICTIONARY_TERMS, DICTIONARY_CATEGORIES } from '../data/dictionaryData'
  * real-time search, category filters, and auto-scroll highlighting.
  */
 export default function DictionaryDrawer({ lang = 'fr', t }) {
-  const { isOpen, activeTermId, closeDictionary, openDictionary } = useDictionary();
+  const { isOpen, activeTermId, closeDictionary, openDictionary, openAboutModal } = useDictionary();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [highlightedId, setHighlightedId] = useState(null);
@@ -167,6 +167,27 @@ export default function DictionaryDrawer({ lang = 'fr', t }) {
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
               <path d="M18 6L6 18M6 6l12 12" />
             </svg>
+          </button>
+        </div>
+
+        {/* Discovery Banner for Newcomers */}
+        <div className="dictionary-about-banner">
+          <div className="dict-about-banner-left">
+            <span className="dict-about-banner-icon" aria-hidden="true">🎮</span>
+            <div>
+              <strong className="dict-about-banner-title">{t('aboutModal.triggerDrawer', lang)}</strong>
+              <p className="dict-about-banner-sub">{t('aboutModal.triggerDrawerSub', lang)}</p>
+            </div>
+          </div>
+          <button
+            type="button"
+            className="dict-about-banner-btn"
+            onClick={() => {
+              closeDictionary();
+              openAboutModal();
+            }}
+          >
+            {t('aboutModal.triggerDrawerBtn', lang)}
           </button>
         </div>
 

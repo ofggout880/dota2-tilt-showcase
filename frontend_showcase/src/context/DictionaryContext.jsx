@@ -3,13 +3,17 @@ import React, { createContext, useContext, useState, useCallback } from 'react';
 const DictionaryContext = createContext({
   isOpen: false,
   activeTermId: null,
+  isAboutOpen: false,
   openDictionary: () => {},
-  closeDictionary: () => {}
+  closeDictionary: () => {},
+  openAboutModal: () => {},
+  closeAboutModal: () => {}
 });
 
 export function DictionaryProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeTermId, setActiveTermId] = useState(null);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
 
   const openDictionary = useCallback((termId = null) => {
     setActiveTermId(termId);
@@ -20,13 +24,24 @@ export function DictionaryProvider({ children }) {
     setIsOpen(false);
   }, []);
 
+  const openAboutModal = useCallback(() => {
+    setIsAboutOpen(true);
+  }, []);
+
+  const closeAboutModal = useCallback(() => {
+    setIsAboutOpen(false);
+  }, []);
+
   return (
     <DictionaryContext.Provider
       value={{
         isOpen,
         activeTermId,
+        isAboutOpen,
         openDictionary,
-        closeDictionary
+        closeDictionary,
+        openAboutModal,
+        closeAboutModal
       }}
     >
       {children}

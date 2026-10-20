@@ -82,8 +82,10 @@ async function runOverflowTest() {
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'chrome_overflow_test_'));
 
   const chromeProc = spawn(CHROME_PATH, [
-    '--headless=new',
+    '--headless',
     `--remote-debugging-port=${CDP_PORT}`,
+    '--remote-debugging-address=127.0.0.1',
+    '--remote-allow-origins=*',
     `--user-data-dir=${tmpDir}`,
     '--disable-gpu',
     '--no-sandbox',

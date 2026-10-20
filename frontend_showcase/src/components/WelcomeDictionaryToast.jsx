@@ -3,7 +3,7 @@ import { useDictionary } from '../context/DictionaryContext';
 
 export default function WelcomeDictionaryToast({ lang = 'fr', t }) {
   const [visible, setVisible] = useState(false);
-  const { openDictionary } = useDictionary();
+  const { openDictionary, openAboutModal } = useDictionary();
   const isFr = lang === 'fr';
 
   useEffect(() => {
@@ -61,6 +61,17 @@ export default function WelcomeDictionaryToast({ lang = 'fr', t }) {
             </>
           )}
         </p>
+
+        <button
+          type="button"
+          className="welcome-dict-btn-dota"
+          onClick={() => {
+            handleDismiss();
+            openAboutModal();
+          }}
+        >
+          {t('aboutModal.triggerToast', lang)}
+        </button>
 
         <div className="welcome-dict-toast-actions">
           <button

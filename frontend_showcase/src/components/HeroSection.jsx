@@ -16,7 +16,7 @@ import { useDictionary } from '../context/DictionaryContext';
  * - 3 Free-floating unboxed editorial pillars (01, 02, 03)
  */
 export default function HeroSection({ lang, t }) {
-  const { openDictionary } = useDictionary();
+  const { openDictionary, openAboutModal } = useDictionary();
 
   const handleScrollTo = (e, targetId) => {
     e.preventDefault();
@@ -34,11 +34,23 @@ export default function HeroSection({ lang, t }) {
         
         {/* Top Floating Editorial Eyebrow */}
         <div className="hero-eyebrow-row">
-          <div className="editorial-badge">
-            <span className="badge-sparkle">✦</span>
-            <span>{t('hero.badge', lang)}</span>
+          <div className="hero-eyebrow-left">
+            <div className="editorial-badge">
+              <span className="badge-sparkle">✦</span>
+              <span>{t('hero.badge', lang)}</span>
+            </div>
+            <span className="hero-eyebrow-sub">ACADEMIC & INDUSTRY SHOWCASE • 2026</span>
           </div>
-          <span className="hero-eyebrow-sub">ACADEMIC & INDUSTRY SHOWCASE • 2026</span>
+          <button
+            type="button"
+            className="hero-about-trigger-pill"
+            onClick={openAboutModal}
+            title={t('aboutModal.triggerHero', lang)}
+          >
+            <span className="hero-about-icon" aria-hidden="true">🎮</span>
+            <span>{t('aboutModal.triggerHero', lang)}</span>
+            <span className="hero-about-arrow" aria-hidden="true">→</span>
+          </button>
         </div>
 
         {/* Master Headline & Free-Floating Summary Row */}
@@ -106,6 +118,16 @@ export default function HeroSection({ lang, t }) {
             </svg>
             <span>{t('hero.ctaBenchmark', lang) || (isFr ? 'Benchmark ML & Modèles' : 'ML Benchmark & Models')}</span>
           </a>
+
+          <button
+            type="button"
+            className="hero-about-cta"
+            onClick={openAboutModal}
+            title={t('aboutModal.triggerHero', lang)}
+          >
+            <span className="hero-about-cta-icon" aria-hidden="true">🎮</span>
+            <span>{isFr ? 'C’est quoi Dota 2 & le Projet ?' : 'What is Dota 2 & the Project?'}</span>
+          </button>
         </div>
 
         {/* SIGNATURE ASYMMETRIC SCULPTED SHAPE CONTAINER */}

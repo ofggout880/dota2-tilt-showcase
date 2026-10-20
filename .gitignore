@@ -47,8 +47,9 @@ dist-ssr/
 .pnp.js
 
 # Data Files & Large Datasets
-data/
+/data/
 backend/data/
+!frontend_showcase/src/data/
 *.csv
 *.pkl
 
