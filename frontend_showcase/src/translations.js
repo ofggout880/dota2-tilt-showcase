@@ -654,6 +654,42 @@ export const translations = {
       actionLexicon: "Consulter le Dictionnaire (21 termes) →",
       actionSimulator: "Tester le Simulateur Temps Réel →",
       actionClose: "Compris / Fermer"
+    },
+
+    // Temporal Dynamics & Trajectory (Simulator)
+    simulatorTrajectory: {
+      title: "Dynamique Temporelle & Trajectoire",
+      subtitle: "Trajectoire séquentielle des 10 matchs précédant le point de rupture T",
+      badgeCritical: "Décrochage Rapide (Spirale de Tilt)",
+      badgeWarning: "Érosion Lente (Fatigue Latente)",
+      badgeStable: "Trajectoire Stable & Rétention Forte",
+      velocityLabel: "Vélocité d'Engagement",
+      gapLabel: "Espacement Inter-Parties",
+      slopeLabel: "Pente de Performance (ΔWR)",
+      recentMatchesLabel: "Historique des 10 derniers matchs :",
+      win: "V",
+      loss: "D",
+      cutoffPoint: "Point T (Observation)",
+      insightCritical: "Signal de désengagement accéléré : l'écart inter-parties s'est multiplié par 3 consécutivement à 3 défaites toxiques.",
+      insightWarning: "Fatigue comportementale mesurable : baisse de régularité et sessions nocturnes de compensation.",
+      insightStable: "Rythme de jeu stable et régulier : aucun signe avant-coureur de rupture émotionnelle."
+    },
+
+    // Temporal Modeling & R&D Roadmap (Architecture)
+    archTemporal: {
+      badge: "PERSPECTIVE SÉRIES TEMPORELLES & R&D",
+      title: "Au-delà du Snapshot : Dynamique Temporelle & Modèles Séquentiels",
+      subtitle: "Comment dépasser la prédiction ponctuelle au Match T pour modéliser la vélocité et l'accélération du désengagement.",
+      pillar1Title: "1. Analyse de Survie Dynamique (Time-to-Event)",
+      pillar1Badge: "Survie & Taux de Hasard",
+      pillar1Desc: "Plutôt qu'une décision binaire (churn oui/non à 14 jours), estimer la courbe de survie conditionnelle S(t | H_t) et le taux de hasard h(t). Cela permet de quantifier avec précision dans combien de jours la rupture aura lieu pour calibrer l'urgence d'intervention.",
+      pillar2Title: "2. Transformers Temporels & LSTM Séquentiels",
+      pillar2Badge: "Deep Learning Séquentiel",
+      pillar2Desc: "Remplacer l'agrégation statique de variables (moyennes glissantes) par des architectures avec attention temporelle (Temporal Fusion Transformers). Le réseau ingère chaque partie séquentiellement, capturant les chocs émotionnels immédiats et la fatigue de fond.",
+      pillar3Title: "3. Processus Ponctuels Temporels (Hawkes)",
+      pillar3Badge: "Processus Auto-Excitants",
+      pillar3Desc: "Modéliser les rafales de parties (bursts) et l'effet de contagion des défaites. Une défaite frustrante génère un pic immédiat de risque de ragequit qui décroît exponentiellement dans le temps si le joueur fait une pause salutaire.",
+      formulaNote: "Formulation mathématique de la fonction de risque instantané intégrant l'amortissement temporel des chocs de tilt :"
     }
   },
 
@@ -1306,6 +1342,42 @@ export const translations = {
       actionLexicon: "Explore Dictionary (21 terms) →",
       actionSimulator: "Test Live Simulator →",
       actionClose: "Got it / Close"
+    },
+
+    // Temporal Dynamics & Trajectory (Simulator)
+    simulatorTrajectory: {
+      title: "Temporal Dynamics & Trajectory",
+      subtitle: "Sequential match-by-match trajectory across the 10 games leading to Cutoff T",
+      badgeCritical: "Accelerated Decay (Tilt Spiral)",
+      badgeWarning: "Gradual Erosion (Latent Fatigue)",
+      badgeStable: "Stable Trajectory & High Retention",
+      velocityLabel: "Engagement Velocity",
+      gapLabel: "Inter-Match Gap",
+      slopeLabel: "Performance Slope (ΔWR)",
+      recentMatchesLabel: "Recent 10-match timeline:",
+      win: "W",
+      loss: "L",
+      cutoffPoint: "Cutoff T (Observation)",
+      insightCritical: "Accelerated disengagement signal: inter-match interval tripled following consecutive toxic losses.",
+      insightWarning: "Measurable behavioral fatigue: dropping regularity accompanied by compensatory late-night sessions.",
+      insightStable: "Stable and consistent playing cadence: zero advance indicators of emotional breakdown."
+    },
+
+    // Temporal Modeling & R&D Roadmap (Architecture)
+    archTemporal: {
+      badge: "TIME-SERIES MODELING & R&D ROADMAP",
+      title: "Beyond the Snapshot: Temporal Dynamics & Sequential Architectures",
+      subtitle: "How to move beyond point predictions at Match T toward modeling velocity and acceleration of player disengagement.",
+      pillar1Title: "1. Dynamic Time-to-Event Survival Analysis",
+      pillar1Badge: "Survival & Hazard Rates",
+      pillar1Desc: "Rather than a binary decision (churn yes/no at 14 days), continuously estimate the conditional survival curve S(t | H_t) and hazard rate h(t). This quantifies exactly in how many days breakdown will occur to calibrate intervention urgency.",
+      pillar2Title: "2. Temporal Fusion Transformers & Sequential LSTMs",
+      pillar2Badge: "Sequential Deep Learning",
+      pillar2Desc: "Replace static summary aggregation (rolling averages) with temporal attention mechanisms (Temporal Fusion Transformers). The network ingests each match chronologically, capturing both acute emotional shocks and baseline fatigue.",
+      pillar3Title: "3. Temporal Point Processes (Hawkes Processes)",
+      pillar3Badge: "Self-Exciting Processes",
+      pillar3Desc: "Model match clustering (bursts) and the contagion dynamics of defeats. A frustrating loss produces an immediate spike in ragequit risk that decays exponentially over time if the player takes a healthy cooldown break.",
+      formulaNote: "Mathematical formulation of the instantaneous hazard rate incorporating time-decayed tilt shock responses:"
     }
   }
 };

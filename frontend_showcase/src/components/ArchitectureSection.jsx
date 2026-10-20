@@ -1167,6 +1167,149 @@ async def get_player_recent_matches(account_id: str):
           </div>
         </article>
 
+        {/* 3b. Advanced Time-Series Dynamics & Sequential Modeling Card */}
+        <section
+          className="glass-card arch-temporal-card"
+          style={{
+            marginBottom: '2.5rem',
+            background: 'radial-gradient(ellipse at 50% 0%, rgba(255, 122, 0, 0.08), transparent 75%), var(--bg-card)',
+            border: '1px solid rgba(255, 122, 0, 0.3)',
+            borderRadius: 'var(--radius-lg)',
+            padding: '2rem 1.75rem'
+          }}
+          aria-labelledby="arch-temporal-title"
+        >
+          <div className="badge badge-orange" style={{ marginBottom: '0.75rem' }}>
+            <span className="badge-sparkle">✦</span>
+            <span>{tr('archTemporal.badge', isFr ? 'PERSPECTIVE SÉRIES TEMPORELLES & R&D' : 'TIME-SERIES MODELING & R&D ROADMAP')}</span>
+          </div>
+
+          <h3 id="arch-temporal-title" style={{ fontFamily: 'var(--font-heading)', fontSize: '1.35rem', fontWeight: 800, color: 'var(--text-heading)', margin: '0 0 0.5rem 0' }}>
+            {tr('archTemporal.title', isFr ? 'Au-delà du Snapshot : Dynamique Temporelle & Modèles Séquentiels' : 'Beyond the Snapshot: Temporal Dynamics & Sequential Architectures')}
+          </h3>
+
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: 1.6, maxWidth: '850px', margin: '0 0 1.75rem 0' }}>
+            {tr('archTemporal.subtitle', isFr ? "Comment dépasser la prédiction ponctuelle au Match T pour modéliser la vélocité et l'accélération du désengagement." : 'How to move beyond point predictions at Match T toward modeling velocity and acceleration of player disengagement.')}
+          </p>
+
+          {/* 3 Pillar Cards for Time-Series Modeling */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+              gap: '1.15rem',
+              marginBottom: '1.75rem'
+            }}
+          >
+            {/* Pillar 1: Dynamic Survival Analysis */}
+            <div
+              style={{
+                background: 'rgba(15, 18, 24, 0.75)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                borderRadius: 'var(--radius-md)',
+                padding: '1.25rem',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.65rem'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span style={{ fontSize: '1.35rem' }} aria-hidden="true">⏱️</span>
+                <span className="badge badge-neutral" style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)' }}>
+                  {tr('archTemporal.pillar1Badge', isFr ? 'Survie & Hasard' : 'Survival & Hazard')}
+                </span>
+              </div>
+              <h4 style={{ fontSize: '0.98rem', fontWeight: 700, color: 'var(--text-heading)', margin: 0 }}>
+                {tr('archTemporal.pillar1Title', isFr ? '1. Analyse de Survie Dynamique' : '1. Dynamic Time-to-Event Survival')}
+              </h4>
+              <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.55, margin: 0 }}>
+                {tr('archTemporal.pillar1Desc', isFr ? "Plutôt qu'une décision binaire (churn oui/non à 14 jours), estimer la courbe de survie conditionnelle S(t | H_t) et le taux de hasard h(t). Cela permet de quantifier avec précision dans combien de jours la rupture aura lieu pour calibrer l'urgence d'intervention." : 'Rather than a binary decision (churn yes/no at 14 days), continuously estimate the conditional survival curve S(t | H_t) and hazard rate h(t). This quantifies exactly in how many days breakdown will occur to calibrate intervention urgency.')}
+              </p>
+            </div>
+
+            {/* Pillar 2: Transformers & LSTMs */}
+            <div
+              style={{
+                background: 'rgba(15, 18, 24, 0.75)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                borderRadius: 'var(--radius-md)',
+                padding: '1.25rem',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.65rem'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span style={{ fontSize: '1.35rem' }} aria-hidden="true">🧠</span>
+                <span className="badge badge-neutral" style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)' }}>
+                  {tr('archTemporal.pillar2Badge', isFr ? 'Deep Learning Séquentiel' : 'Sequential Deep Learning')}
+                </span>
+              </div>
+              <h4 style={{ fontSize: '0.98rem', fontWeight: 700, color: 'var(--text-heading)', margin: 0 }}>
+                {tr('archTemporal.pillar2Title', isFr ? '2. Transformers Temporels & LSTM' : '2. Temporal Fusion Transformers & LSTMs')}
+              </h4>
+              <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.55, margin: 0 }}>
+                {tr('archTemporal.pillar2Desc', isFr ? "Remplacer l'agrégation statique de variables (moyennes glissantes) par des architectures avec attention temporelle (Temporal Fusion Transformers). Le réseau ingère chaque partie séquentiellement, capturant les chocs émotionnels immédiats et la fatigue de fond." : 'Replace static summary aggregation (rolling averages) with temporal attention mechanisms (Temporal Fusion Transformers). The network ingests each match chronologically, capturing both acute emotional shocks and baseline fatigue.')}
+              </p>
+            </div>
+
+            {/* Pillar 3: Hawkes Processes */}
+            <div
+              style={{
+                background: 'rgba(15, 18, 24, 0.75)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                borderRadius: 'var(--radius-md)',
+                padding: '1.25rem',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.65rem'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span style={{ fontSize: '1.35rem' }} aria-hidden="true">⚡</span>
+                <span className="badge badge-neutral" style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)' }}>
+                  {tr('archTemporal.pillar3Badge', isFr ? 'Processus Auto-Excitants' : 'Self-Exciting Processes')}
+                </span>
+              </div>
+              <h4 style={{ fontSize: '0.98rem', fontWeight: 700, color: 'var(--text-heading)', margin: 0 }}>
+                {tr('archTemporal.pillar3Title', isFr ? '3. Processus Ponctuels (Hawkes)' : '3. Temporal Point Processes (Hawkes)')}
+              </h4>
+              <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.55, margin: 0 }}>
+                {tr('archTemporal.pillar3Desc', isFr ? "Modéliser les rafales de parties (bursts) et l'effet de contagion des défaites. Une défaite frustrante génère un pic immédiat de risque de ragequit qui décroît exponentiellement dans le temps si le joueur fait une pause salutaire." : 'Model match clustering (bursts) and the contagion dynamics of defeats. A frustrating loss produces an immediate spike in ragequit risk that decays exponentially over time if the player takes a healthy cooldown break.')}
+              </p>
+            </div>
+          </div>
+
+          {/* Mathematical Formula Banner */}
+          <div
+            style={{
+              padding: '1rem 1.25rem',
+              background: 'rgba(10, 12, 16, 0.85)',
+              border: '1px solid rgba(255, 122, 0, 0.25)',
+              borderRadius: 'var(--radius-md)',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.5rem'
+            }}
+          >
+            <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>
+              {tr('archTemporal.formulaNote', isFr ? "Formulation mathématique de la fonction de risque instantané intégrant l'amortissement temporel des chocs de tilt :" : 'Mathematical formulation of the instantaneous hazard rate incorporating time-decayed tilt shock responses:')}
+            </span>
+            <div
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.88rem',
+                color: 'var(--accent-orange)',
+                letterSpacing: '0.04em',
+                overflowX: 'auto',
+                padding: '0.35rem 0'
+              }}
+            >
+              h(t | x(t)) = h₀(t) · exp( βᵀx(t) + Σ αₖ · exp(-δ · (t - tₖ)) )
+            </div>
+          </div>
+        </section>
+
         {/* 4. Quickstart & Reproducibility Panel */}
         <section className="glass-card quickstart-card" aria-label={isFr ? 'Démarrage rapide et reproductibilité' : 'Quickstart & Reproducibility'}>
           <div className="badge badge-orange" style={{ marginBottom: '0.75rem' }}>
