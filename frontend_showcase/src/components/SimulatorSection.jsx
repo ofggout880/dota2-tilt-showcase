@@ -635,7 +635,8 @@ export default function SimulatorSection({
                 };
 
             return (
-              <div className="simulator-analytics-grid" style={{ marginBottom: '1.5rem' }}>
+              <>
+                <div className="simulator-analytics-grid" style={{ marginBottom: '1.5rem' }}>
                 {/* Left Column: Risk Gauge + Telemetry Strip + Temporal Trajectory */}
                 <div className="simulator-left-column">
                   <RiskGauge
@@ -736,147 +737,6 @@ export default function SimulatorSection({
                       </div>
                     </div>
                   </div>
-
-                  {/* Temporal Dynamics & Trajectory Card (Time-Series Modeling Extension) */}
-                  <div
-                    className="card simulator-trajectory-card"
-                    style={{
-                      marginTop: '1.25rem',
-                      background: 'var(--bg-card)',
-                      border: '1px solid var(--border-subtle)',
-                      borderRadius: 'var(--radius-lg)',
-                      padding: '1.25rem 1.35rem'
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.85rem', flexWrap: 'wrap', gap: '0.5rem' }}>
-                      <div>
-                        <h4 style={{ fontSize: '0.875rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--text-secondary)', margin: 0, display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                          <span aria-hidden="true">📈</span>
-                          <span>{tr('simulatorTrajectory.title', isFr ? 'Dynamique Temporelle & Trajectoire' : 'Temporal Dynamics & Trajectory')}</span>
-                        </h4>
-                        <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', margin: '0.2rem 0 0 0' }}>
-                          {tr('simulatorTrajectory.subtitle', isFr ? 'Trajectoire séquentielle des 10 matchs précédant le point de rupture T' : 'Sequential match-by-match trajectory across the 10 games leading to Cutoff T')}
-                        </p>
-                      </div>
-
-                      {/* Active Trajectory Badge */}
-                      <span
-                        className="badge"
-                        style={{
-                          fontSize: '0.7rem',
-                          fontWeight: 700,
-                          color: trajectoryBadge.color,
-                          background: trajectoryBadge.bg,
-                          border: `1px solid ${trajectoryBadge.border}`,
-                          padding: '0.25rem 0.65rem',
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '0.35rem'
-                        }}
-                      >
-                        <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: trajectoryBadge.color }} />
-                        {trajectoryBadge.label}
-                      </span>
-                    </div>
-
-                    {/* 10-Match Timeline */}
-                    <div style={{ margin: '1rem 0 0.85rem' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.4rem', fontSize: '0.72rem', color: 'var(--text-muted)' }}>
-                        <span>{tr('simulatorTrajectory.recentMatchesLabel', isFr ? 'Historique des 10 derniers matchs :' : 'Recent 10-match timeline:')}</span>
-                        <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent-orange)' }}>
-                          {tr('simulatorTrajectory.cutoffPoint', isFr ? 'Point T (Observation)' : 'Cutoff T (Observation)')} ✦
-                        </span>
-                      </div>
-
-                      <div
-                        style={{
-                          display: 'grid',
-                          gridTemplateColumns: 'repeat(10, 1fr)',
-                          gap: '0.35rem',
-                          alignItems: 'center'
-                        }}
-                      >
-                        {matchHistory.map((isWin, idx) => {
-                          const isLast = idx === matchHistory.length - 1;
-                          return (
-                            <div
-                              key={idx}
-                              style={{
-                                textAlign: 'center',
-                                padding: '0.4rem 0.15rem',
-                                borderRadius: '4px',
-                                background: isWin ? 'rgba(16, 185, 129, 0.14)' : 'rgba(239, 68, 68, 0.16)',
-                                border: isLast ? '1px solid var(--accent-orange)' : (isWin ? '1px solid rgba(16, 185, 129, 0.35)' : '1px solid rgba(239, 68, 68, 0.35)'),
-                                position: 'relative'
-                              }}
-                              title={`Match ${idx - 9}: ${isWin ? (isFr ? 'Victoire' : 'Win') : (isFr ? 'Défaite' : 'Loss')}`}
-                            >
-                              <span
-                                style={{
-                                  fontSize: '0.75rem',
-                                  fontWeight: 800,
-                                  fontFamily: 'var(--font-mono)',
-                                  color: isWin ? 'var(--accent-emerald, #10b981)' : 'var(--accent-rose, #ef4444)'
-                                }}
-                              >
-                                {isWin ? tr('simulatorTrajectory.win', 'V') : tr('simulatorTrajectory.loss', 'D')}
-                              </span>
-                              <span style={{ display: 'block', fontSize: '0.58rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', marginTop: '0.1rem' }}>
-                                {idx === 9 ? 'T' : `-${9 - idx}`}
-                              </span>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-
-                    {/* 3 Metric Slopes */}
-                    <div
-                      style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
-                        gap: '0.65rem',
-                        marginTop: '0.85rem'
-                      }}
-                    >
-                      <div className="stat-box" style={{ padding: '0.5rem' }}>
-                        <span className="stat-label">{tr('simulatorTrajectory.velocityLabel', isFr ? "Vélocité d'Engagement" : 'Engagement Velocity')}</span>
-                        <span className="stat-value" style={{ fontSize: '0.95rem', color: trajectoryBadge.color }}>
-                          {trajectoryBadge.velocity}
-                        </span>
-                      </div>
-
-                      <div className="stat-box" style={{ padding: '0.5rem' }}>
-                        <span className="stat-label">{tr('simulatorTrajectory.gapLabel', isFr ? 'Espacement Inter-Parties' : 'Inter-Match Gap')}</span>
-                        <span className="stat-value" style={{ fontSize: '0.95rem', color: '#ffffff' }}>
-                          {trajectoryBadge.gap}
-                        </span>
-                      </div>
-
-                      <div className="stat-box" style={{ padding: '0.5rem' }}>
-                        <span className="stat-label">{tr('simulatorTrajectory.slopeLabel', isFr ? 'Pente de Performance (ΔWR)' : 'Performance Slope (ΔWR)')}</span>
-                        <span className="stat-value" style={{ fontSize: '0.95rem', color: trajectoryBadge.color }}>
-                          {trajectoryBadge.slope}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Analytical Insight Note */}
-                    <div
-                      style={{
-                        marginTop: '0.85rem',
-                        padding: '0.65rem 0.85rem',
-                        background: 'rgba(255, 255, 255, 0.03)',
-                        borderLeft: `3px solid ${trajectoryBadge.color}`,
-                        borderRadius: '0 var(--radius-sm) var(--radius-sm) 0',
-                        fontSize: '0.74rem',
-                        color: 'var(--text-secondary)',
-                        lineHeight: 1.45
-                      }}
-                    >
-                      <strong>{isFr ? 'Constat de série :' : 'Time-series insight:'}</strong> {trajectoryBadge.insight}
-                    </div>
-                  </div>
                 </div>
 
                 {/* Right Column: Factor Attribution */}
@@ -891,7 +751,165 @@ export default function SimulatorSection({
                   />
                 </div>
               </div>
-            );
+
+              {/* Full-Width Temporal Dynamics & Trajectory Card */}
+              <div
+                className="card simulator-trajectory-card"
+                style={{
+                  background: 'var(--bg-card)',
+                  border: '1px solid var(--border-subtle)',
+                  borderRadius: 'var(--radius-lg)',
+                  padding: 'clamp(1rem, 2.5vw, 1.5rem)',
+                  marginBottom: '1rem',
+                  minWidth: 0,
+                  maxWidth: '100%',
+                  boxSizing: 'border-box'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.1rem', flexWrap: 'wrap', gap: '0.75rem' }}>
+                  <div>
+                    <h4 style={{ fontSize: '0.95rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--text-secondary)', margin: 0, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <span aria-hidden="true">📈</span>
+                      <span>{tr('simulatorTrajectory.title', isFr ? 'Dynamique Temporelle & Trajectoire' : 'Temporal Dynamics & Trajectory')}</span>
+                    </h4>
+                    <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', margin: '0.25rem 0 0 0' }}>
+                      {tr('simulatorTrajectory.subtitle', isFr ? 'Trajectoire séquentielle des 10 matchs précédant le point de rupture T' : 'Sequential match-by-match trajectory across the 10 games leading to Cutoff T')}
+                    </p>
+                  </div>
+
+                  {/* Active Trajectory Badge */}
+                  <span
+                    className="badge"
+                    style={{
+                      fontSize: '0.74rem',
+                      fontWeight: 700,
+                      color: trajectoryBadge.color,
+                      background: trajectoryBadge.bg,
+                      border: `1px solid ${trajectoryBadge.border}`,
+                      padding: '0.3rem 0.75rem',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.4rem'
+                    }}
+                  >
+                    <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: trajectoryBadge.color }} />
+                    {trajectoryBadge.label}
+                  </span>
+                </div>
+
+                {/* Horizontal 2-Panel Grid: Timeline (Left) + Velocity Slopes (Right) */}
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                    gap: '1.25rem',
+                    alignItems: 'start',
+                    minWidth: 0
+                  }}
+                >
+                  {/* Left: 10-Match Timeline */}
+                  <div style={{ minWidth: 0, overflow: 'hidden' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem', fontSize: '0.74rem', color: 'var(--text-muted)' }}>
+                      <span>{tr('simulatorTrajectory.recentMatchesLabel', isFr ? 'Historique des 10 derniers matchs :' : 'Recent 10-match timeline:')}</span>
+                      <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent-orange)' }}>
+                        {tr('simulatorTrajectory.cutoffPoint', isFr ? 'Point T (Observation)' : 'Cutoff T (Observation)')} ✦
+                      </span>
+                    </div>
+
+                    <div
+                      style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(10, 1fr)',
+                        gap: 'clamp(2px, 0.8vw, 6px)',
+                        alignItems: 'center',
+                        minWidth: 0
+                      }}
+                    >
+                      {matchHistory.map((isWin, idx) => {
+                        const isLast = idx === matchHistory.length - 1;
+                        return (
+                          <div
+                            key={idx}
+                            style={{
+                              textAlign: 'center',
+                              padding: '0.45rem 0.1rem',
+                              borderRadius: 'var(--radius-sm)',
+                              background: isWin ? 'rgba(16, 185, 129, 0.14)' : 'rgba(239, 68, 68, 0.16)',
+                              border: isLast ? '1.5px solid var(--accent-orange)' : (isWin ? '1px solid rgba(16, 185, 129, 0.35)' : '1px solid rgba(239, 68, 68, 0.35)'),
+                              position: 'relative',
+                              minWidth: 0
+                            }}
+                            title={`Match ${idx - 9}: ${isWin ? (isFr ? 'Victoire' : 'Win') : (isFr ? 'Défaite' : 'Loss')}`}
+                          >
+                            <span
+                              style={{
+                                fontSize: 'clamp(0.72rem, 1.8vw, 0.82rem)',
+                                fontWeight: 800,
+                                fontFamily: 'var(--font-mono)',
+                                color: isWin ? 'var(--accent-emerald, #10b981)' : 'var(--accent-rose, #ef4444)'
+                              }}
+                            >
+                              {isWin ? tr('simulatorTrajectory.win', 'V') : tr('simulatorTrajectory.loss', 'D')}
+                            </span>
+                            <span style={{ display: 'block', fontSize: '0.58rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', marginTop: '0.1rem' }}>
+                              {idx === 9 ? 'T' : `-${9 - idx}`}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    {/* Analytical Insight Note */}
+                    <div
+                      style={{
+                        marginTop: '0.9rem',
+                        padding: '0.65rem 0.85rem',
+                        background: 'rgba(255, 255, 255, 0.03)',
+                        borderLeft: `3px solid ${trajectoryBadge.color}`,
+                        borderRadius: '0 var(--radius-sm) var(--radius-sm) 0',
+                        fontSize: '0.76rem',
+                        color: 'var(--text-secondary)',
+                        lineHeight: 1.5
+                      }}
+                    >
+                      <strong>{isFr ? 'Constat de série :' : 'Time-series insight:'}</strong> {trajectoryBadge.insight}
+                    </div>
+                  </div>
+
+                  {/* Right: 3 Metric Slopes */}
+                  <div
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))',
+                      gap: '0.65rem',
+                      minWidth: 0
+                    }}
+                  >
+                    <div className="stat-box" style={{ padding: '0.65rem 0.5rem', minWidth: 0 }}>
+                      <span className="stat-label" style={{ fontSize: '0.7rem' }}>{tr('simulatorTrajectory.velocityLabel', isFr ? "Vélocité d'Engagement" : 'Engagement Velocity')}</span>
+                      <span className="stat-value" style={{ fontSize: '0.95rem', color: trajectoryBadge.color, marginTop: '0.2rem' }}>
+                        {trajectoryBadge.velocity}
+                      </span>
+                    </div>
+
+                    <div className="stat-box" style={{ padding: '0.65rem 0.5rem', minWidth: 0 }}>
+                      <span className="stat-label" style={{ fontSize: '0.7rem' }}>{tr('simulatorTrajectory.gapLabel', isFr ? 'Espacement Inter-Parties' : 'Inter-Match Gap')}</span>
+                      <span className="stat-value" style={{ fontSize: '0.95rem', color: '#ffffff', marginTop: '0.2rem' }}>
+                        {trajectoryBadge.gap}
+                      </span>
+                    </div>
+
+                    <div className="stat-box" style={{ padding: '0.65rem 0.5rem', minWidth: 0 }}>
+                      <span className="stat-label" style={{ fontSize: '0.7rem' }}>{tr('simulatorTrajectory.slopeLabel', isFr ? 'Pente de Performance (ΔWR)' : 'Performance Slope (ΔWR)')}</span>
+                      <span className="stat-value" style={{ fontSize: '0.95rem', color: trajectoryBadge.color, marginTop: '0.2rem' }}>
+                        {trajectoryBadge.slope}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          );
           })()}
         </div>
       </div>
