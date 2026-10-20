@@ -8,7 +8,7 @@ import GlossaryTerm from './GlossaryTerm';
  * and project purpose with highlighted orange keywords and visual game figures.
  */
 export default function AboutDotaModal({ lang = 'fr', t }) {
-  const { isAboutOpen, closeAboutModal, openDictionary } = useDictionary();
+  const { isOpen, isAboutOpen, closeAboutModal, openDictionary } = useDictionary();
   const modalRef = useRef(null);
   const isFr = lang === 'fr';
 
@@ -17,7 +17,7 @@ export default function AboutDotaModal({ lang = 'fr', t }) {
     if (!isAboutOpen) return;
 
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
+      if (e.key === 'Escape' && !isOpen) {
         closeAboutModal();
       }
     };
@@ -38,12 +38,11 @@ export default function AboutDotaModal({ lang = 'fr', t }) {
       document.body.style.overflow = originalOverflow;
       clearTimeout(focusTimer);
     };
-  }, [isAboutOpen, closeAboutModal]);
+  }, [isAboutOpen, isOpen, closeAboutModal]);
 
   if (!isAboutOpen) return null;
 
   const handleOpenDict = () => {
-    closeAboutModal();
     openDictionary('dota2');
   };
 

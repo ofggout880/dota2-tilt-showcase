@@ -121,11 +121,13 @@ export default function HeroSection({ lang, t }) {
 
           <button
             type="button"
-            className="hero-about-cta"
+            className="hero-minimal-cta hero-about-cta"
             onClick={openAboutModal}
-            title={t('aboutModal.triggerHero', lang)}
           >
-            <span className="hero-about-cta-icon" aria-hidden="true">🎮</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+            </svg>
             <span>{isFr ? 'C’est quoi Dota 2 & le Projet ?' : 'What is Dota 2 & the Project?'}</span>
           </button>
         </div>

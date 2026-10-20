@@ -3368,7 +3368,7 @@ p {
 .dictionary-overlay {
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: 10050;
   display: flex;
   justify-content: flex-end;
   pointer-events: auto;
@@ -3397,7 +3397,7 @@ p {
   display: flex;
   flex-direction: column;
   animation: dictSlideIn 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 10000;
+  z-index: 10060;
   overflow: hidden;
 }
 
@@ -4298,24 +4298,24 @@ p {
 .hero-about-cta {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.95rem 1.35rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-sm);
-  color: var(--text-secondary);
+  gap: 0.6rem;
+  padding: 0.75rem 1.4rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-full);
+  color: #e2e8f0;
   font-family: var(--font-heading);
-  font-size: 0.88rem;
+  font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
 .hero-about-cta:hover {
-  background: rgba(255, 122, 0, 0.1);
-  border-color: rgba(255, 122, 0, 0.4);
-  color: #ffffff;
-  transform: translateY(-2px);
+  border-color: var(--accent-orange);
+  color: var(--accent-orange);
+  background: rgba(255, 122, 0, 0.06);
+  transform: translateY(-1px);
 }
 
 /* --- DICTIONARY DRAWER ABOUT BANNER --- */
